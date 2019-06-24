@@ -1,0 +1,38 @@
+#  ************************************************************************** #
+#                                                           LE - /            #
+#                                                               /             #
+#    Makefile                                         .::    .:/ .      .::   #
+#                                                  +:+:+   +:    +:  +:+:+    #
+#    By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     #
+#                                                  #+#   #+    #+    #+#      #
+#    Created: 2019/06/20 19:05:09 by brey-gal     #+#   ##    ##    #+#       #
+#    Updated: 2019/06/20 19:05:09 by brey-gal    ###    #+. /#+    ###.fr     #
+#                                                          /                  #
+#                                                         /                   #
+#  ************************************************************************** #
+
+NAME = libft.a
+
+CC = gcc
+
+CFLAGS = -Wall -Werror -Wextra
+
+OBJ = $(SRC:.c=.o)
+
+SRC = ft_win_del.c
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+		ar ruc $@ $?
+		ranlib $@
+
+.PHONY: clean fclean re
+
+clean:
+		$(RM) $(OBJ)
+
+fclean: clean
+		$(RM)  $(NAME)
+
+re: fclean all
