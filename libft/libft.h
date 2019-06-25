@@ -18,6 +18,4 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-void	ft_win_del(t_win *win);
-
 #endif

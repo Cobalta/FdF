@@ -17,6 +17,8 @@ void	ft_win_del(t_win *win)
 {
 	win->mlx_ptr = NULL;
 	win->win_ptr = NULL;
-	free(win);
+	win->x = 0;
+	win->y = 0;
+	win = NULL;
 	return ;
 }

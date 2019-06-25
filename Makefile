@@ -23,7 +23,7 @@ LIB = -L. libft/libft.a
 
 CC = CC
 
-MLX = -L ./miniLibX -l mlx -framework OpenGL -framework AppKit
+MLX = -L ./minilibx -lmlx -framework OpenGL -framework AppKit
 
 all : $(NAME)
 

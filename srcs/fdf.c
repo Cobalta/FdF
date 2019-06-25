@@ -12,8 +12,28 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int		main(int ac, char **av)
+int		deal_key(int key, t_win *win)
 {
+	if (key == 53)
+	{
+		ft_win_del(win);
+		exit(1);
+	}
+	printf("%d\n", key);
 	return 0;
+}
+
+int		main(void)
+{
+	t_win win;
+
+	win.x = 500;
+	win.y = 500;
+	win.mlx_ptr = mlx_init();
+	win.win_ptr = mlx_new_window(win.mlx_ptr, win.x, win.y, "FdF");
+	mlx_key_hook(win.win_ptr, deal_key, &win);
+	mlx_loop(win.mlx_ptr);
 }

@@ -14,12 +14,17 @@
 #ifndef FDF_FDF_H
 # define FDF_FDF_H
 
-# include "../../libft/libft.h"
+# include "../libft/libft.h"
+# include "../minilibx/mlx.h"
 
 typedef struct	s_win
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		x;
+	int		y;
 }				t_win;
+
+void	ft_win_del(t_win *win);
 
 #endif
