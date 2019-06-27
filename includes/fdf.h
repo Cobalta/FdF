@@ -19,7 +19,9 @@
 # include "struct.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 
 void	ft_win_del(t_win *win);
+void	line_tracer(t_coor *coor, t_win *win);
 
 #endif

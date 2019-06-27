@@ -15,6 +15,7 @@ NAME = fdf
 
 SRCS =	srcs/fdf.c 			\
 		srcs/ft_win_del.c	\
+		srcs/line_tracer.c
 
 OBJS = $(SRCS:.c=.o)
 
