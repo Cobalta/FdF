@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   libft.h                                          .::    .:/ .      .::   */
+/*   ft_strnew.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: brey-gal <brey-gal@student.42.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/06/20 19:01:20 by brey-gal     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/20 19:01:20 by brey-gal    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/06 17:07:27 by brey-gal     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/22 16:56:04 by brey-gal    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef FDF_LIBFT_H
-# define FDF_LIBFT_H
+#include "lib/libft.h"
 
-# include "../includes/fdf.h"
-# include <unistd.h>
+char	*ft_strnew(size_t size)
+{
+	char	*dest;
+	size_t	i;
 
-void	ft_puterror(char *str);
-void	ft_putstr(char *str);
-char	*ft_strnew(size_t size);
-
-#endif
+	i = 0;
+	if (!(dest = (char *)malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	while (i <= size)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}

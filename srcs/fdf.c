@@ -57,8 +57,13 @@ int		main(int ac, char **av)
 {
 	t_win win;
 
-	if (ac != 2)
+	if (ac != 2) {
 		ft_puterror("usage : ./fdf <map>");
+	}
+	char *LEAKS = ft_strnew(10);
+	free(LEAKS);
+	LEAKS = "tondarron";
+	printf("%s\n", LEAKS);
 	ft_fdf(&win);
 	return (0);
 }
