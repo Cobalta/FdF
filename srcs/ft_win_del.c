@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   libft.h                                          .::    .:/ .      .::   */
+/*   ft_win_del.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/06/20 19:01:20 by brey-gal     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/20 19:01:20 by brey-gal    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/06/20 18:54:42 by brey-gal     #+#   ##    ##    #+#       */
+/*   Updated: 2019/06/20 18:54:42 by brey-gal    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef FDF_LIBFT_H
-# define FDF_LIBFT_H
+#include "../includes/fdf.h"
 
-# include "../includes/fdf.h"
-
-void	ft_puterror(char *str);
-void	ft_putstr(char *str);
-
-#endif
+void	ft_win_del(t_win *win)
+{
+	win->mlx_ptr = NULL;
+	win->win_ptr = NULL;
+	win->x = 0;
+	win->y = 0;
+	win = NULL;
+	return ;
+}

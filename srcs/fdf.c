@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -26,14 +26,23 @@ int		deal_key(int key, t_win *win)
 	return 0;
 }
 
-int		main(void)
+int		ft_fdf(t_win *win)
+{
+	win->x = 2560;
+	win->y = 1315;
+	win->mlx_ptr = mlx_init();
+	win->win_ptr = mlx_new_window(win->mlx_ptr, win->x, win->y, "FdF");
+	mlx_key_hook(win->win_ptr, deal_key, win);
+	mlx_loop(win->mlx_ptr);
+	return (0);
+}
+
+int		main(int ac, char **av)
 {
 	t_win win;
 
-	win.x = 500;
-	win.y = 500;
-	win.mlx_ptr = mlx_init();
-	win.win_ptr = mlx_new_window(win.mlx_ptr, win.x, win.y, "FdF");
-	mlx_key_hook(win.win_ptr, deal_key, &win);
-	mlx_loop(win.mlx_ptr);
+	if (ac != 2)
+		ft_puterror("usage : ./fdf <map>");
+	ft_fdf(&win);
+	return (0);
 }

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_win_del.c                                     .::    .:/ .      .::   */
+/*   fdf.h                                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/06/20 18:54:42 by brey-gal     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/20 18:54:42 by brey-gal    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/06/20 18:44:15 by brey-gal     #+#   ##    ##    #+#       */
+/*   Updated: 2019/06/20 18:44:15 by brey-gal    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FDF_FDF_H
+# define FDF_FDF_H
 
-void	ft_win_del(t_win *win)
-{
-	win->mlx_ptr = NULL;
-	win->win_ptr = NULL;
-	win->x = 0;
-	win->y = 0;
-	win = NULL;
-	return ;
-}
+# include "../libft/libft.h"
+# include "../minilibx/mlx.h"
+# include "struct.h"
+# include <stdlib.h>
+# include <unistd.h>
+
+void	ft_win_del(t_win *win);
+
+#endif

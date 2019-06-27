@@ -13,7 +13,8 @@
 
 NAME = fdf
 
-SRCS =	srcs/fdf.c
+SRCS =	srcs/fdf.c 			\
+		srcs/ft_win_del.c	\
 
 OBJS = $(SRCS:.c=.o)
 
