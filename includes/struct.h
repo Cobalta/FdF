@@ -22,4 +22,23 @@ typedef struct	s_win
 	int		y;
 }				t_win;
 
+typedef struct	s_line
+{
+	int		px;
+	int		py;
+	int		dx;
+	int		dy;
+	int		x_incr;
+	int		y_incr;
+
+}				t_line;
+
+typedef struct	s_coor
+{
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
+}				t_coor;
+
 #endif
