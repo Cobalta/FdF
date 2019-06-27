@@ -20,7 +20,8 @@ CFLAGS = -Wall -Werror -Wextra
 OBJ = $(SRC:.c=.o)
 
 SRC =	ft_puterror.c   \
-        ft_putstr.c
+        ft_putstr.c		\
+        ft_strnew.c		\
 
 all: $(NAME)
 
