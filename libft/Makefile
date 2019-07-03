@@ -22,6 +22,10 @@ OBJ = $(SRC:.c=.o)
 SRC =	ft_puterror.c   \
         ft_putstr.c		\
         ft_strnew.c		\
+        ft_strjoin.c	\
+        ft_strcpy.c		\
+        ft_strsub.c		\
+        ft_strlen.c
 
 all: $(NAME)
 

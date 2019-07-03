@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   fdf.h                                            .::    .:/ .      .::   */
+/*   get_next_line.h                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: brey-gal <brey-gal@student.42.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/06/20 18:44:15 by brey-gal     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/20 18:44:15 by brey-gal    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/05/28 16:49:32 by brey-gal     #+#   ##    ##    #+#       */
+/*   Updated: 2019/05/28 16:49:34 by brey-gal    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef FDF_FDF_H
-# define FDF_FDF_H
-
-# include "../libft/libft.h"
-# include "../minilibx/mlx.h"
-# include "struct.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <math.h>
-
+# include "libft/libft.h"
 # define BUFF_SIZE 5000
 
-void	ft_win_del(t_win *win);
-void	line_tracer(t_coor *coor, t_win *win);
-int 	get_next_line(const int fd, char **line);
-int		ft_fdf(t_win *win);
+int get_next_line(const int fd, char **line);
 
 #endif
