@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   fdf.c                                            .::    .:/ .      .::   */
+/*   win_del.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/06/20 18:44:21 by brey-gal     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/20 18:44:21 by brey-gal    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/06/20 18:54:42 by brey-gal     #+#   ##    ##    #+#       */
+/*   Updated: 2019/06/20 18:54:42 by brey-gal    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		main(int ac, char **av)
+void	win_del(t_win *win)
 {
-	t_win win;
-	char 	**map;
-
-	if (ac != 2) {
-		ft_puterror("usage : ./fdf <map>");
-	}
-	map = get_map(av[1]);
-	fdf(&win);
-	free(map);
-	return (0);
+	win->mlx_ptr = NULL;
+	win->win_ptr = NULL;
+	win->x = 0;
+	win->y = 0;
+	win = NULL;
+	return ;
 }

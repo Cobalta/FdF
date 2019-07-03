@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   fdf.c                                            .::    .:/ .      .::   */
+/*   map_line_new.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/06/20 18:44:21 by brey-gal     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/20 18:44:21 by brey-gal    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/07/03 21:23:08 by brey-gal     #+#   ##    ##    #+#       */
+/*   Updated: 2019/07/03 21:23:08 by brey-gal    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		main(int ac, char **av)
+t_map_line	*map_line_new(void)
 {
-	t_win win;
-	char 	**map;
+	t_map_line	*new_map_line;
 
-	if (ac != 2) {
-		ft_puterror("usage : ./fdf <map>");
-	}
-	map = get_map(av[1]);
-	fdf(&win);
-	free(map);
-	return (0);
+	if (!(new_map_line = (t_map_line *)malloc(sizeof(t_map_line))))
+		return (NULL);
+	new_map_line->line = NULL;
+	new_map_line->nbl = 0;
+	new_map_line->next = NULL;
+	return (new_map_line);
 }

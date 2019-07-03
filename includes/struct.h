@@ -41,4 +41,11 @@ typedef struct	s_coor
 	int		y2;
 }				t_coor;
 
+typedef	struct	s_map_line
+{
+	char 	*line;
+	int		nbl;
+	void	*next;
+}				t_map_line;
+
 #endif

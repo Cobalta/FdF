@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_win_del.c                                     .::    .:/ .      .::   */
+/*   fdf.c                                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/06/20 18:54:42 by brey-gal     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/20 18:54:42 by brey-gal    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/07/03 20:41:09 by brey-gal     #+#   ##    ##    #+#       */
+/*   Updated: 2019/07/03 20:41:09 by brey-gal    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	ft_win_del(t_win *win)
+int		deal_key(int key, t_win *win)
 {
-	win->mlx_ptr = NULL;
-	win->win_ptr = NULL;
-	win->x = 0;
-	win->y = 0;
-	win = NULL;
-	return ;
+	if (key == 53)
+	{
+		win_del(win);
+		exit(1);
+	}
+	return 0;
+}
+
+int		fdf(t_win *win)
+{
+	t_coor coor;
+
+	win->x = 2560;
+	win->y = 1315;
+	win->mlx_ptr = mlx_init();
+	win->win_ptr = mlx_new_window(win->mlx_ptr, win->x, win->y, "FdF");
+	mlx_key_hook(win->win_ptr, deal_key, win);
+	mlx_loop(win->mlx_ptr);
+	return (0);
 }

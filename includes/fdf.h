@@ -24,9 +24,13 @@
 
 # define BUFF_SIZE 5000
 
-void	ft_win_del(t_win *win);
-void	line_tracer(t_coor *coor, t_win *win);
-int 	get_next_line(const int fd, char **line);
-int		ft_fdf(t_win *win);
+void		win_del(t_win *win);
+void		line_tracer(t_coor *coor, t_win *win);
+int 		get_next_line(const int fd, char **line);
+int			fdf(t_win *win);
+char 		**get_map(char *map);
+void		map_line_next(t_map_line **map_line, char *str);
+t_map_line	*map_line_new(void);
+void		map_line_del(t_map_line **map_line);
 
 #endif
