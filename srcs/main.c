@@ -35,8 +35,8 @@ int		main(int ac, char **av)
 		printf("\n");
 		i++;
 	}
-	printf("w %d | L %d", map.width, map.lenght);
+	printf("w %d | L %d\nma", map.width, map.lenght);
+	map_del(&map);
 	fdf(&win);
-	free(map.map);
 	return (0);
 }

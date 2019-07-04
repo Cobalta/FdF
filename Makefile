@@ -14,13 +14,12 @@
 NAME = fdf
 
 SRCS =	srcs/main.c 			\
-		srcs/win_del.c			\
+		srcs/ft_del.c			\
 		srcs/line_tracer.c		\
 		srcs/get_next_line.c	\
 		srcs/fdf.c				\
 		srcs/get_map.c			\
 		srcs/map_line_new.c		\
-		srcs/map_line_del.c		\
 		srcs/map_line_next.c    \
 		srcs/render.c           \
 		srcs/matrix_op.c
