@@ -25,13 +25,15 @@ int		deal_key(int key, t_win *win)
 
 int		fdf(t_win *win)
 {
-	t_coor coor;
-
+	int i = 0;
 	win->x = 2560;
 	win->y = 1315;
 	win->mlx_ptr = mlx_init();
 	win->win_ptr = mlx_new_window(win->mlx_ptr, win->x, win->y, "FdF");
+	//mlx_expose_hook(win->win_ptr, render, win);
+	render(win);
 	mlx_key_hook(win->win_ptr, deal_key, win);
 	mlx_loop(win->mlx_ptr);
+
 	return (0);
 }

@@ -21,7 +21,8 @@ int		main(int ac, char **av)
 	if (ac != 2) {
 		ft_puterror("usage : ./fdf <map>");
 	}
-	map = get_map(av[1]);
+	//map = get_map(av[1]);
+
 	fdf(&win);
 	free(map);
 	return (0);

@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
+# include <stdio.h>
 
 # define BUFF_SIZE 5000
 
@@ -32,5 +33,8 @@ char 		**get_map(char *map);
 void		map_line_next(t_map_line **map_line, char *str);
 t_map_line	*map_line_new(void);
 void		map_line_del(t_map_line **map_line);
+int			render(t_win *win);
+t_vec		mat_mult(t_vec *vec, t_mat mat);
+t_vec		*rotate_z(t_vec *vec);
 
 #endif

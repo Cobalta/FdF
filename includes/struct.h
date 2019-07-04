@@ -48,4 +48,18 @@ typedef	struct	s_map_line
 	void	*next;
 }				t_map_line;
 
+typedef	struct	s_vec
+{
+	float x;
+	float y;
+	float z;
+}				t_vec;
+
+typedef	struct	s_mat
+{
+	float x[3];
+	float y[3];
+	float z[3];
+}				t_mat;
+
 #endif
