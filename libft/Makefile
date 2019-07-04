@@ -29,6 +29,7 @@ SRC =	ft_puterror.c   \
         ft_strdup.c		\
         ft_atoi.c
 
+
 all: $(NAME)
 
 $(NAME): $(OBJ)

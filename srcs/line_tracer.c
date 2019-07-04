@@ -77,7 +77,7 @@ void	line_tracer(t_coor *coor, t_win *win)
 	line.dx = 2 * line.px;
 	line.dy = 2 * line.py;
 
-	if (line.dx > line.dy)
+	if (line.dx >= line.dy)
 		linewriter1(&line, coor, win);
 	else if (line.dx < line.dy)
 		linewriter2(&line, coor, win);
