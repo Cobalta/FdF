@@ -62,4 +62,12 @@ typedef	struct	s_mat
 	float z[3];
 }				t_mat;
 
+typedef struct	s_map
+{
+	int		**map;
+	int		width;
+	int		lenght;
+}				t_map;
+
+
 #endif

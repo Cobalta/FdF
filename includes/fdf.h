@@ -29,7 +29,7 @@ void		win_del(t_win *win);
 void		line_tracer(t_coor *coor, t_win *win);
 int 		get_next_line(const int fd, char **line);
 int			fdf(t_win *win);
-char 		**get_map(char *map);
+void 		get_map(char *av, t_map *map);
 void		map_line_next(t_map_line **map_line, char *str);
 t_map_line	*map_line_new(void);
 void		map_line_del(t_map_line **map_line);

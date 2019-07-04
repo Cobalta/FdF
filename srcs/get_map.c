@@ -16,36 +16,81 @@
 
 #include <stdio.h>
 
-char 	**map_convert(t_map_line *map_line)
+int		get_nb(char *line)
+{
+	int i;
+	int nb;
+	int space;
+
+	i = 0;
+	nb = 0;
+	space = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && space == 0)
+		{
+			nb++;
+			space = 1;
+		}
+		if (line[i] == ' ' && space == 1)
+			space = 0;
+		i++;
+	}
+	return (nb);
+}
+
+int		*line_convert(char *line, t_map *map)
+{
+	int i;
+	int	y;
+	int u = 0;
+	int	*int_line;
+
+	i = 0;
+	y = 0;
+	if (!(int_line = (int *)malloc(sizeof(int) * get_nb(line) + 1)))
+		return 0;
+	map->width = get_nb(line);
+	while (i < get_nb(line))
+	{
+		while (line[u] == ' ')
+			u++;
+		while ((line[y + u] >= '0' && line[y + u] <= '9') || line[y + u] == '-' || line[y + u] == '+')
+			y++;
+		int_line[i] = ft_atoi(ft_strsub(line, u, y));
+		u = u + y;
+		y = 0;
+		i++;
+	}
+	return int_line;
+}
+
+void 	map_convert(t_map_line *map_line, t_map *map)
 {
 	t_map_line	*nb_line;
-	char 		**map;
 	int			i;
 
 	nb_line = map_line;
 	while (nb_line->next != NULL)
 		nb_line = nb_line->next;
-	if (!(map = (char **)malloc(sizeof(char *) * nb_line->nbl + 1)))
-		return (NULL);
+	if (!(map->map = (int **)malloc(sizeof(int *) * nb_line->nbl)))
+		return ;
+	map->lenght = nb_line->nbl;
 	i = 0;
 	map_line = map_line->next;
 	while (map_line->next != NULL)
 	{
-		map[i] = ft_strdup(map_line->line);
+		map->map[i] = line_convert(map_line->line, map);
 		map_line = map_line->next;
 		i++;
 	}
-	map[i] = ft_strdup(map_line->line);
-	map_line = map_line->next;
-	map[i +1] = "\0";
-	return (map);
+	map->map[i] = line_convert(map_line->line, map);
 }
 
-char 	**get_map(char *av)
+void	get_map(char *av, t_map *map)
 {
 	t_map_line	*map_line;
 	char		*line;
-	char 		**map;
 	int			fd;
 
 	fd = open(av, O_RDONLY);
@@ -55,6 +100,19 @@ char 	**get_map(char *av)
 		map_line_next(&map_line, line);
 		free(line);
 	}
-	map = map_convert(map_line);
-	return (map);
+	map_convert(map_line, map);
+
+//	int ton = 0;
+//	int pere;
+//	while (map[ton][0] != '\0')
+//	{
+//		pere = 0;
+//		while (map[ton][pere])
+//		{
+//			printf("%d  ", map[ton][pere]);
+//			pere++;
+//		}
+//		ft_putstr("\n");
+//		ton++;
+//	}
 }
