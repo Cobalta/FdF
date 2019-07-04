@@ -76,6 +76,7 @@ void 	map_convert(t_map_line *map_line, t_map *map)
 	if (!(map->map = (int **)malloc(sizeof(int *) * nb_line->nbl)))
 		return ;
 	map->lenght = nb_line->nbl;
+
 	i = 0;
 	map_line = map_line->next;
 	while (map_line->next != NULL)
