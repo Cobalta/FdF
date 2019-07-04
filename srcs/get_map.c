@@ -41,10 +41,11 @@ int		get_nb(char *line)
 
 int		*line_convert(char *line, t_map *map)
 {
-	int i;
-	int	y;
-	int u = 0;
-	int	*int_line;
+	int		i;
+	int		y;
+	int		u = 0;
+	int		*int_line;
+	char	*tmp;
 
 	i = 0;
 	y = 0;
@@ -57,7 +58,9 @@ int		*line_convert(char *line, t_map *map)
 			u++;
 		while ((line[y + u] >= '0' && line[y + u] <= '9') || line[y + u] == '-' || line[y + u] == '+')
 			y++;
-		int_line[i] = ft_atoi(ft_strsub(line, u, y));
+		tmp = ft_strsub(line, u, y);
+		int_line[i] = ft_atoi(tmp);
+		free(tmp);
 		u = u + y;
 		y = 0;
 		i++;
@@ -102,6 +105,7 @@ void	get_map(char *av, t_map *map)
 		free(line);
 	}
 	map_convert(map_line, map);
+	map_line_del(map_line);
 
 //	int ton = 0;
 //	int pere;
