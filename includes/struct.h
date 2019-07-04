@@ -48,4 +48,11 @@ typedef	struct	s_map_line
 	void	*next;
 }				t_map_line;
 
+typedef struct	s_map
+{
+	int		**map;
+	int		width;
+	int		lenght;
+}				t_map;
+
 #endif
