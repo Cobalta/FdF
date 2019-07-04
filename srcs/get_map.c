@@ -93,7 +93,8 @@ void	get_map(char *av, t_map *map)
 	char		*line;
 	int			fd;
 
-	fd = open(av, O_RDONLY);
+	if ((fd = open(av, O_RDONLY)) < 0)
+		ft_puterror("Invalid map\nusage : ./fdf <valid map>");
 	map_line = map_line_new();
 	while (get_next_line(fd, &line) > 0)
 	{

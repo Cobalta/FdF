@@ -33,13 +33,14 @@ typedef struct	s_line
 
 }				t_line;
 
-typedef struct	s_coor
+typedef struct	s_seg
 {
 	int		x1;
 	int		y1;
 	int		x2;
 	int		y2;
-}				t_coor;
+	void	*next;
+}				t_seg;
 
 typedef	struct	s_map_line
 {
@@ -50,17 +51,19 @@ typedef	struct	s_map_line
 
 typedef	struct	s_vec
 {
-	float x;
-	float y;
-	float z;
+	float	x;
+	float	y;
+	float	z;
+	void	*right;
+	void	*down;
 }				t_vec;
 
-typedef	struct	s_mat
+typedef	struct	s_mtx
 {
 	float x[3];
 	float y[3];
 	float z[3];
-}				t_mat;
+}				t_mtx;
 
 typedef struct	s_map
 {
@@ -69,5 +72,9 @@ typedef struct	s_map
 	int		lenght;
 }				t_map;
 
+typedef struct	s_draw
+{
+	t_win	*win;
+}				t_draw;
 
 #endif

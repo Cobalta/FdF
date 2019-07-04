@@ -26,7 +26,7 @@
 # define BUFF_SIZE 5000
 
 void		win_del(t_win *win);
-void		line_tracer(t_coor *coor, t_win *win);
+void		line_tracer(t_seg *seg, t_win *win);
 int 		get_next_line(const int fd, char **line);
 int			fdf(t_win *win);
 void 		get_map(char *av, t_map *map);
@@ -36,5 +36,6 @@ void		map_line_del(t_map_line **map_line);
 int			render(t_win *win);
 t_vec		mat_mult(t_vec *vec, t_mat mat);
 t_vec		*rotate_z(t_vec *vec);
+void		setup(t_draw *draw);
 
 #endif

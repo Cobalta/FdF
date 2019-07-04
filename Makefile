@@ -23,7 +23,8 @@ SRCS =	srcs/main.c 			\
 		srcs/map_line_del.c		\
 		srcs/map_line_next.c    \
 		srcs/render.c           \
-		srcs/matrix_op.c
+		srcs/matrix_op.c        \
+		srcs/setup.c
 
 OBJS = $(SRCS:.c=.o)
 
