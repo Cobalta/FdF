@@ -24,19 +24,18 @@ int		main(int ac, char **av)
 	get_map(av[1], &map);
 	int i = 0;
 	int y;
-	while (i < map.lenght)
+	while (i < map.height)
 	{
 		y = 0;
 		while (y < map.width)
 		{
-			printf("%d ", map.map[i][y]);
+			//printf("%d ", map.map[i][y]);
 			y++;
 		}
-		printf("\n");
+		//printf("\n");
 		i++;
 	}
-	printf("w %d | L %d\nma", map.width, map.lenght);
+	fdf(&win, &map);
 	map_del(&map);
-	fdf(&win);
 	return (0);
 }

@@ -40,7 +40,7 @@ void	trace_square(t_vec *vec1, t_vec *vec2, t_vec *vec3, t_vec *vec4, t_win *win
 	coor4.x2 = vec1->x;
 	coor4.y2 = vec1->y;
 
-	printf("x1 %d y1 %d x2 %d y2 %d \n", coor1.x1, coor1.y1, coor1.x2, coor1.y2);
+//	printf("x1 %d y1 %d x2 %d y2 %d \n", coor1.x1, coor1.y1, coor1.x2, coor1.y2);
 
 	line_tracer(&coor1, win);
 	line_tracer(&coor2, win);

@@ -14,15 +14,16 @@
 NAME = fdf
 
 SRCS =	srcs/main.c 			\
-		srcs/ft_del.c			\
+		srcs/struct_del.c		\
 		srcs/line_tracer.c		\
 		srcs/get_next_line.c	\
 		srcs/fdf.c				\
 		srcs/get_map.c			\
-		srcs/map_line_new.c		\
-		srcs/map_line_next.c    \
+		srcs/struct_new.c		\
+		srcs/struct_next.c	    \
 		srcs/render.c           \
-		srcs/matrix_op.c
+		srcs/matrix_op.c		\
+		srcs/map_to_struct.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -28,7 +28,7 @@
 void		win_del(t_win *win);
 void		line_tracer(t_coor *coor, t_win *win);
 int 		get_next_line(const int fd, char **line);
-int			fdf(t_win *win);
+int			fdf(t_win *win, t_map *map);
 void 		get_map(char *av, t_map *map);
 t_map_line	*map_line_new(void);
 void		map_line_next(t_map_line **map_line, char *str);
@@ -37,5 +37,9 @@ void		map_del(t_map *map);
 int			render(t_win *win);
 t_vec		mat_mult(t_vec *vec, t_mat mat);
 t_vec		*rotate_z(t_vec *vec);
+t_vec		*vec_new(void);
+void		vec_next(t_vec **vec, int x, int y ,int z);
+void		vec_del(t_vec *vec);
+void		map_to_struct(t_map *map, t_vec *vec);
 
 #endif
