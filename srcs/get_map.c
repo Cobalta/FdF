@@ -78,7 +78,7 @@ void 	map_convert(t_map_line *map_line, t_map *map)
 		nb_line = nb_line->next;
 	if (!(map->map = (int **)malloc(sizeof(int *) * nb_line->nbl)))
 		return ;
-	map->lenght = nb_line->nbl;
+	map->height = nb_line->nbl;
 	i = 0;
 	map_line = map_line->next;
 	while (map_line->next != NULL)
@@ -106,18 +106,4 @@ void	get_map(char *av, t_map *map)
 	}
 	map_convert(map_line, map);
 	map_line_del(map_line);
-
-//	int ton = 0;
-//	int pere;
-//	while (map[ton][0] != '\0')
-//	{
-//		pere = 0;
-//		while (map[ton][pere])
-//		{
-//			printf("%d  ", map[ton][pere]);
-//			pere++;
-//		}
-//		ft_putstr("\n");
-//		ton++;
-//	}
 }

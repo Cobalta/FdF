@@ -15,8 +15,6 @@
 
 int		map_draw(t_env *env)
 {
-	t_seg seg1;
-
 	t_vec vec1;
 	t_vec vec2;
 	t_vec vec3;
@@ -25,6 +23,7 @@ int		map_draw(t_env *env)
 	t_vec vec6;
 	t_vec vec7;
 	t_vec vec8;
+	t_seg seg1;
 
 	vec1 = project(&(env->vec1));
 	vec2 = project(&(env->vec2));
@@ -167,8 +166,8 @@ int		render(t_env *env)
 	rotate_y(&env->vec6);
 	rotate_y(&env->vec7);
 	rotate_y(&env->vec8);
-	printf("x %f y %f z %f\n",(env->vec1).x, (env->vec1).y, (env->vec1).z);
-	printf("x %f y %f z %f\n",(env->vec5).x, (env->vec5).y, (env->vec5).z);
+	//printf("x %f y %f z %f\n",(env->vec1).x, (env->vec1).y, (env->vec1).z);
+	//printf("x %f y %f z %f\n",(env->vec5).x, (env->vec5).y, (env->vec5).z);
 
 
 	map_draw(env);

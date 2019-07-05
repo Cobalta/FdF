@@ -16,28 +16,26 @@
 int		main(int ac, char **av)
 {
 	t_env env;
-	t_map map;
+
 
 	if (ac != 2) {
 		ft_puterror("usage : ./fdf <map>");
 	}
-	get_map(av[1], &map);
+	get_map(av[1], &env.map);
 	int i = 0;
 	int y;
-	while (i < map.lenght)
+	while (i < (env.map).height)
 	{
 		y = 0;
-		while (y < map.width)
+		while (y < (env.map).width)
 		{
-			printf("%d ", map.map[i][y]);
+			//printf("%d ", map.map[i][y]);
 			y++;
 		}
-		printf("\n");
+		//printf("\n");
 		i++;
 	}
-
-	//printf("w %d | L %d \n", map.width, map.lenght);
-	map_del(&map);
 	fdf(&env);
+	map_del(&env.map);
 	return (0);
 }

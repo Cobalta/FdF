@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_del.c                                         .::    .:/ .      .::   */
+/*   struct_del.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
@@ -13,12 +13,23 @@
 
 #include "../includes/fdf.h"
 
+void	vec_del(t_vec *vec)
+{
+	if (vec->next != NULL)
+		vec_del(vec->next);
+	if (vec->down != NULL)
+		vec->down = NULL;
+	if (vec->right != NULL)
+		vec->right = NULL;
+	free(vec);
+}
+
 void	map_del(t_map *map)
 {
 	int 	i;
 
 	i = 0;
-	while (i < map->lenght)
+	while (i < map->height)
 	{
 		free(map->map[i]);
 		i++;

@@ -44,11 +44,12 @@ typedef	struct	s_map_line
 
 typedef	struct	s_vec
 {
-	float	x;
-	float	y;
-	float	z;
+	float 	x;
+	float 	y;
+	float 	z;
 	void	*right;
 	void	*down;
+	void	*next;
 }				t_vec;
 
 typedef	struct	s_mtx
@@ -62,13 +63,14 @@ typedef struct	s_map
 {
 	int		**map;
 	int		width;
-	int		lenght;
+	int		height;
 }				t_map;
 
 typedef struct	s_env
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_map	map;
 	int		width;
 	int		height;
 	t_vec vec1;
@@ -79,6 +81,7 @@ typedef struct	s_env
 	t_vec vec6;
 	t_vec vec7;
 	t_vec vec8;
+	t_vec *vec;
 }				t_env;
 
 #endif

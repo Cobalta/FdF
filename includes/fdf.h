@@ -43,5 +43,9 @@ t_vec		*rotate_y(t_vec *vec);
 t_vec		*rotate_z(t_vec *vec);
 t_vec 		translate(t_vec *vec, int x, int y, int z);
 void		setup(t_env *env);
+t_vec		*vec_new(void);
+void		vec_next(t_vec **vec, int x, int y ,int z);
+void		vec_del(t_vec *vec);
+void		map_to_struct(t_map *map, t_vec *vec);
 
 #endif

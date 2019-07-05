@@ -67,11 +67,10 @@ int		fdf(t_env *env)
 	setup(env);
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, env->width, env->height, "FdF");
-	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+	env->vec = vec_new();
+	map_to_struct(&env->map, env->vec);
+	vec_del(env->vec);
 	mlx_key_hook(env->win_ptr, deal_key, env);
-	//mlx_expose_hook(win->win_ptr, render, &env);
-	//mlx_loop_hook(win->win_ptr, map_draw, &env);
 	mlx_loop(env->mlx_ptr);
-
 	return (0);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   map_line_next.c                                  .::    .:/ .      .::   */
+/*   struct_next.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
@@ -12,6 +12,21 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+void	vec_next(t_vec **vec, int x, int y, int z)
+{
+	t_vec	*next_vec;
+	t_vec	*new_vec;
+
+	new_vec = *vec;
+	while (new_vec->next != NULL)
+		new_vec = new_vec->next;
+	next_vec = vec_new();
+	next_vec->x = x;
+	next_vec->y = y;
+	next_vec->z = z;
+	new_vec->next = next_vec;
+}
 
 void	map_line_next(t_map_line **map_line, char *str)
 {
