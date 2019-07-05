@@ -14,13 +14,6 @@
 #ifndef FDF_STRUCT_H
 # define FDF_STRUCT_H
 
-typedef struct	s_win
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		x;
-	int		y;
-}				t_win;
 
 typedef struct	s_line
 {
@@ -72,9 +65,20 @@ typedef struct	s_map
 	int		lenght;
 }				t_map;
 
-typedef struct	s_draw
+typedef struct	s_env
 {
-	t_win	*win;
-}				t_draw;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	int		width;
+	int		height;
+	t_vec vec1;
+	t_vec vec2;
+	t_vec vec3;
+	t_vec vec4;
+	t_vec vec5;
+	t_vec vec6;
+	t_vec vec7;
+	t_vec vec8;
+}				t_env;
 
 #endif

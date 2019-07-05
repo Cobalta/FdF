@@ -35,12 +35,12 @@ void	map_line_del(t_map_line *map_line)
 	free(map_line);
 }
 
-void	win_del(t_win *win)
+void	env_del(t_env *env)
 {
-	win->mlx_ptr = NULL;
-	win->win_ptr = NULL;
-	win->x = 0;
-	win->y = 0;
-	win = NULL;
+	env->mlx_ptr = NULL;
+	env->win_ptr = NULL;
+	env->width = 0;
+	env->height = 0;
+	env = NULL;
 	return ;
 }

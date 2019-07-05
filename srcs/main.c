@@ -15,7 +15,7 @@
 #include <stdio.h>
 int		main(int ac, char **av)
 {
-	t_win win;
+	t_env env;
 	t_map map;
 
 	if (ac != 2) {
@@ -36,8 +36,8 @@ int		main(int ac, char **av)
 		i++;
 	}
 
-	printf("w %d | L %d \n", map.width, map.lenght);
+	//printf("w %d | L %d \n", map.width, map.lenght);
 	map_del(&map);
-	fdf(&win);
+	fdf(&env);
 	return (0);
 }

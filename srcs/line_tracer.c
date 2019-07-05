@@ -13,7 +13,7 @@
 
 #include "../includes/fdf.h"
 
-static void	linewriter1(t_line *line, t_seg *seg, t_win *win)
+static void	linewriter1(t_line *line, t_seg *seg, t_env *env)
 {
 	int i;
 	int px1;
@@ -25,7 +25,7 @@ static void	linewriter1(t_line *line, t_seg *seg, t_win *win)
 
 	while (i <= px1)
 	{
-		mlx_pixel_put(win->mlx_ptr, win->win_ptr, seg->x1, seg->y1, 0xffb5c5);
+		mlx_pixel_put(env->mlx_ptr, env->win_ptr, seg->x1, seg->y1, 0xffb5c5);
 		i++;
 		seg->x1 += line->x_incr;
 		line->px -= line->dy;
@@ -38,7 +38,7 @@ static void	linewriter1(t_line *line, t_seg *seg, t_win *win)
 	return ;
 }
 
-static void	linewriter2(t_line *line, t_seg *seg, t_win *win)
+static void	linewriter2(t_line *line, t_seg *seg, t_env *env)
 {
 	int i;
 	int px1;
@@ -49,7 +49,7 @@ static void	linewriter2(t_line *line, t_seg *seg, t_win *win)
 	py1 = line->py;
 	while (i <= py1)
 	{
-		mlx_pixel_put(win->mlx_ptr, win->win_ptr, seg->x1, seg->y1, 0xffb5c5);
+		mlx_pixel_put(env->mlx_ptr, env->win_ptr, seg->x1, seg->y1, 0xffb5c5);
 		i++;
 		seg->y1 += line->y_incr;
 		line->py -= line->dx;
@@ -62,7 +62,7 @@ static void	linewriter2(t_line *line, t_seg *seg, t_win *win)
 	return ;
 }
 
-void	line_tracer(t_seg *seg, t_win *win)
+void	line_tracer(t_seg *seg, t_env *env)
 {
 	t_line line;
 
@@ -78,8 +78,8 @@ void	line_tracer(t_seg *seg, t_win *win)
 	line.dy = 2 * line.py;
 
 	if (line.dx >= line.dy)
-		linewriter1(&line, seg, win);
+		linewriter1(&line, seg, env);
 	else if (line.dx < line.dy)
-		linewriter2(&line, seg, win);
+		linewriter2(&line, seg, env);
 	return ;
 }

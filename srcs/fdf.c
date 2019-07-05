@@ -13,39 +13,65 @@
 
 #include "../includes/fdf.h"
 
-int		deal_key(int key, t_win *win)
+int		deal_key(int key, t_env *env)
 {
+
 	if (key == 53)
 	{
-		win_del(win);
+		env_del(env);
 		exit(1);
 	}
+	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+	render(env);
 	return 0;
 }
 
-int		map_draw(t_draw *draw)
-{
-	while (
-
-			)
-	return 0;
-}
-
-int		fdf(t_win *win)
+int		fdf(t_env *env)
 {
 	int i = 0;
-	t_draw draw;
 
-	draw.win = win;
-	win->x = 2560;
-	win->y = 1315;
-	setup(&draw);
-	win->mlx_ptr = mlx_init();
-	win->win_ptr = mlx_new_window(win->mlx_ptr, win->x, win->y, "FdF");
-	//mlx_expose_hook(win->win_ptr, render, win);
-	mlx_key_hook(win->win_ptr, deal_key, win);
-	mlx_expose_hook(win->win_ptr, map_draw, &draw);
-	mlx_loop(win->mlx_ptr);
+	(env->vec1).x = 0;
+	(env->vec1).y = 0;
+	(env->vec1).z = 0;
+
+	(env->vec2).x = 0;
+	(env->vec2).y = 0;
+	(env->vec2).z = 0;
+
+	(env->vec3).x = 0;
+	(env->vec3).y = 0;
+	(env->vec3).z = 0;
+
+	(env->vec4).x = 0;
+	(env->vec4).y = 0;
+	(env->vec4).z = 0;
+
+	(env->vec5).x = 0;
+	(env->vec5).y = 0;
+	(env->vec5).z = 0;
+
+	(env->vec6).x = 0;
+	(env->vec6).y = 0;
+	(env->vec6).z = 0;
+
+	(env->vec7).x = 0;
+	(env->vec7).y = 0;
+	(env->vec7).z = 0;
+
+	(env->vec8).x = 0;
+	(env->vec8).y = 0;
+	(env->vec8).z = 0;
+
+	env->width = 2560;
+	env->height = 1315;
+	setup(env);
+	env->mlx_ptr = mlx_init();
+	env->win_ptr = mlx_new_window(env->mlx_ptr, env->width, env->height, "FdF");
+	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+	mlx_key_hook(env->win_ptr, deal_key, env);
+	//mlx_expose_hook(win->win_ptr, render, &env);
+	//mlx_loop_hook(win->win_ptr, map_draw, &env);
+	mlx_loop(env->mlx_ptr);
 
 	return (0);
 }

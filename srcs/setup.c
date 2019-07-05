@@ -11,29 +11,42 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
-void	setup(t_draw *draw)
+void	setup(t_env *env)
 {
-	t_vec vec1;
-	t_vec vec2;
-	t_vec vec3;
-	t_vec vec4;
 
-	vec1.x = 500;
-	vec1.y = 500;
-	vec1.z = 400;
+	(env->vec1).x = -0.5;
+	(env->vec1).y = -0.5;
+	(env->vec1).z = -0.5;
 
-	vec2.x = 800;
-	vec2.y = 500;
-	vec2.z = 400;
+	(env->vec2).x = 0.5;
+	(env->vec2).y = -0.5;
+	(env->vec2).z = -0.5;
 
-	vec3.x = 800;
-	vec3.y = 800;
-	vec3.z = 400;
+	(env->vec3).x = 0.5;
+	(env->vec3).y = 0.5;
+	(env->vec3).z = -0.5;
 
-	vec4.x = 500;
-	vec4.y = 800;
-	vec4.z = 400;
+	(env->vec4).x = -0.5;
+	(env->vec4).y = 0.5;
+	(env->vec4).z = -0.5;
+
+	(env->vec5).x = -0.5;
+	(env->vec5).y = -0.5;
+	(env->vec5).z = 0.5;
+
+	(env->vec6).x = 0.5;
+	(env->vec6).y = -0.5;
+	(env->vec6).z = 0.5;
+
+	(env->vec7).x = 0.5;
+	(env->vec7).y = 0.5;
+	(env->vec7).z = 0.5;
+
+	(env->vec8).x = -0.5;
+	(env->vec8).y = 0.5;
+	(env->vec8).z = 0.5;
+
 	return;
 }
