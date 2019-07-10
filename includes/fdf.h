@@ -27,7 +27,7 @@
 # define PI 3.1415926535
 
 void		env_del(t_env *env);
-void		line_tracer(t_seg *seg, t_env *env);
+void		line_tracer(t_seg *seg, t_env *env, t_img *img);
 int 		get_next_line(const int fd, char **line);
 int			fdf(t_env *env, t_vec *vec);
 void 		get_map(char *av, t_map *map);
@@ -49,5 +49,6 @@ t_vec		*vec_new(void);
 void		vec_next(t_vec **vec, int x, int y ,int z);
 void		vec_del(t_vec *vec);
 void		map_to_struct(t_map *map, t_vec *vec);
+void		fill_pixel(char *img_str, int x, int y, t_img *img);
 
 #endif
