@@ -13,7 +13,7 @@
 
 #include "../includes/fdf.h"
 
-void	fill_pixel(char *img_str, int x, int y, t_img *img)
+void	fill_pixel(char *img_str, int x, int y, t_env *env)
 {
 	int pos;
 	int i;
@@ -22,7 +22,7 @@ void	fill_pixel(char *img_str, int x, int y, t_img *img)
 	pos = 0;
 	while (i < y)
 	{
-		pos = pos + 4 * img->width * 2;
+		pos = pos + 4 * env->width;
 		i++;
 	}
 	i = 0;

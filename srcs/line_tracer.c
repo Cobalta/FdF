@@ -18,14 +18,18 @@ static void	linewriter1(t_line *line, t_seg *seg, t_env *env)
 	int i;
 	int px1;
 	int py1;
+	int bpp;
+	int sl;
+	int endian;
+	char *img_str;
 
 	i = 0;
 	px1 = line->px;
 	py1 = line->py;
-
+	img_str = mlx_get_data_addr(env->img_pptr, &(bpp), &(sl), &(endian));
 	while (i <= px1)
 	{
-		mlx_pixel_put(env->mlx_ptr, env->win_ptr, seg->x1, seg->y1, 0xffb5c5);
+		fill_pixel(img_str, seg->x1, seg->y1, env);
 		i++;
 		seg->x1 += line->x_incr;
 		line->px -= line->dy;
@@ -35,7 +39,6 @@ static void	linewriter1(t_line *line, t_seg *seg, t_env *env)
 			line->px += line->dx;
 		}
 	}
-	return ;
 }
 
 static void	linewriter2(t_line *line, t_seg *seg, t_env *env)
@@ -43,13 +46,19 @@ static void	linewriter2(t_line *line, t_seg *seg, t_env *env)
 	int i;
 	int px1;
 	int py1;
+	int bpp;
+	int sl;
+	int endian;
+	char *img_str;
 
 	i = 0;
 	px1 = line->px;
 	py1 = line->py;
+
+	img_str = mlx_get_data_addr(env->img_pptr, &(bpp), &(sl), &(endian));
 	while (i <= py1)
 	{
-		mlx_pixel_put(env->mlx_ptr, env->win_ptr, seg->x1, seg->y1, 0xffb5c5);
+		fill_pixel(img_str, seg->x1, seg->y1, env);
 		i++;
 		seg->y1 += line->y_incr;
 		line->py -= line->dx;
@@ -65,7 +74,6 @@ static void	linewriter2(t_line *line, t_seg *seg, t_env *env)
 void	line_tracer(t_seg *seg, t_env *env)
 {
 	t_line line;
-
 	line.px = abs(seg->x2 - seg->x1);
 	line.py = abs(seg->y2 - seg->y1);
 	line.x_incr = 1;
@@ -76,7 +84,6 @@ void	line_tracer(t_seg *seg, t_env *env)
 		line.y_incr = -1;
 	line.dx = 2 * line.px;
 	line.dy = 2 * line.py;
-
 	if (line.dx >= line.dy)
 		linewriter1(&line, seg, env);
 	else if (line.dx < line.dy)

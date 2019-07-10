@@ -30,9 +30,9 @@ int		deal_key(int key, t_env *env)
 		env->angle_z += PI / 30;
 	if (key == 2)
 	{
-		env->angle_x += PI / 30;
-		env->angle_y += PI / 30;
-		env->angle_z += PI / 30;
+		env->angle_x = 0;
+		env->angle_y = 0;
+		env->angle_z = 0;
 	}
 
 	while (env->angle_x > (2 * PI))
@@ -66,6 +66,7 @@ int		fdf(t_env *env, t_vec *vec)
 	env->angle_z = 0;
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, env->width, env->height, "FdF");
+	env->img_pptr = mlx_new_image(env->mlx_ptr, env->width, env->height);
 	map_to_struct(&env->map, env->vec);
 	mlx_key_hook(env->win_ptr, deal_key, env);
 	mlx_mouse_hook(env->win_ptr, deal_mouse, env);

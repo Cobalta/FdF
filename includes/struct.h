@@ -66,6 +66,13 @@ typedef struct	s_map
 	int		height;
 }				t_map;
 
+typedef struct	s_img
+{
+	void	*img_ptr;
+	int		width;
+	int		height;
+}				t_img;
+
 typedef struct	s_env
 {
 	void	*mlx_ptr;
@@ -76,14 +83,11 @@ typedef struct	s_env
 	float	angle_y;
 	float	angle_z;
 	t_map	map;
+	t_img	*img;
+	void	*img_pptr;
 	t_vec	*vec;
 }				t_env;
 
-typedef struct	s_img
-{
-	void	*img_ptr;
-	int		width;
-	int		height;
-}				t_img;
+
 
 #endif

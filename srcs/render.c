@@ -17,7 +17,7 @@ void	draw_right(t_vec *vec1, t_vec *vec2, t_env *env)
 {
 	t_seg seg;
 
-	*vec2 = vec_mult(vec2, 20);
+	*vec2 = vec_mult(vec2, 30);
 	*vec2 = translate(vec2, env->width/2, env->height/2, 0);
 	seg.x1 = (int)(vec1->x);
 	seg.y1 = (int)(vec1->y);
@@ -30,7 +30,7 @@ void	draw_down(t_vec *vec1, t_vec *vec3, t_env *env)
 {
 	t_seg seg;
 
-	*vec3 = vec_mult(vec3, 20);
+	*vec3 = vec_mult(vec3, 30);
 	*vec3 = translate(vec3, env->width/2, env->height/2, 0);
 	seg.x1 = (int)(vec1->x);
 	seg.y1 = (int)(vec1->y);
@@ -49,7 +49,7 @@ void	map_draw(t_vec *vec, t_env *env)
 	vec1 = rotate_y(&vec1, env->angle_y);
 	vec1 = rotate_z(&vec1, env->angle_z);
 	project(&vec1);
-	vec1 = vec_mult(&vec1, 20);
+	vec1 = vec_mult(&vec1, 30);
 	vec1 = translate(&vec1, env->width/2, env->height/2, 0);
 	if (vec->right != NULL)
 	{
@@ -72,6 +72,7 @@ void	map_draw(t_vec *vec, t_env *env)
 
 int		render(t_vec *vec, t_env *env)
 {
+
 	//printf("B x %f y %f z %f\n",vec->x, vec->y, vec->z),fflush(stdout);
 	while (vec->next != NULL)
 	{
@@ -79,7 +80,9 @@ int		render(t_vec *vec, t_env *env)
 		map_draw(vec->next, env);
 		vec = vec->next;
 	}
-
-
+	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_pptr, 0, 0);
+	mlx_destroy_image(env->mlx_ptr, env->img_pptr);
+	env->img_pptr = mlx_new_image(env->mlx_ptr, env->width, env->height);
 	return (0);
 }
