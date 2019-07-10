@@ -84,4 +84,11 @@ typedef struct	s_env
 	t_vec *vec;
 }				t_env;
 
+typedef struct	s_img
+{
+	void	*img_ptr;
+	int		width;
+	int		height;
+}				t_img;
+
 #endif

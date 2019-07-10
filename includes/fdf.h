@@ -26,7 +26,7 @@
 # define BUFF_SIZE 5000
 
 void		env_del(t_env *env);
-void		line_tracer(t_seg *seg, t_env *env);
+void		line_tracer(t_seg *seg, t_env *env, t_img *img);
 int 		get_next_line(const int fd, char **line);
 int			fdf(t_env *env);
 void 		get_map(char *av, t_map *map);
@@ -34,7 +34,7 @@ t_map_line	*map_line_new(void);
 void		map_line_next(t_map_line **map_line, char *str);
 void		map_line_del(t_map_line *map_line);
 void		map_del(t_map *map);
-int			render(t_env *env);
+int			render(t_env *env, t_img *img);
 t_vec		project(t_vec *vec);
 t_vec		vec_mult(t_vec *vec, int mult);
 t_vec		mtx_mult(t_vec *vec, t_mtx mtx);
@@ -47,5 +47,6 @@ t_vec		*vec_new(void);
 void		vec_next(t_vec **vec, int x, int y ,int z);
 void		vec_del(t_vec *vec);
 void		map_to_struct(t_map *map, t_vec *vec);
+void		fill_pixel(char *img_str, int x, int y, t_img *img);
 
 #endif
