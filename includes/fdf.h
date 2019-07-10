@@ -24,23 +24,25 @@
 # include <stdio.h>
 
 # define BUFF_SIZE 5000
+# define PI 3.1415926535
 
 void		env_del(t_env *env);
 void		line_tracer(t_seg *seg, t_env *env);
 int 		get_next_line(const int fd, char **line);
-int			fdf(t_env *env);
+int			fdf(t_env *env, t_vec *vec);
 void 		get_map(char *av, t_map *map);
 t_map_line	*map_line_new(void);
 void		map_line_next(t_map_line **map_line, char *str);
 void		map_line_del(t_map_line *map_line);
 void		map_del(t_map *map);
-int			render(t_env *env);
-t_vec		project(t_vec *vec);
+int			render(t_vec *vec, t_env *env);
+void		project(t_vec *vec);
 t_vec		vec_mult(t_vec *vec, int mult);
-t_vec		mtx_mult(t_vec *vec, t_mtx mtx);
-t_vec		*rotate_x(t_vec *vec);
-t_vec		*rotate_y(t_vec *vec);
-t_vec		*rotate_z(t_vec *vec);
+void		mtx_mult(t_vec *vec, t_mtx mtx);
+void		rotate(t_vec *vec, char rot);
+t_vec		rotate_x(t_vec *vec, float angle);
+t_vec		rotate_y(t_vec *vec, float angle);
+t_vec		rotate_z(t_vec *vec, float angle);
 t_vec 		translate(t_vec *vec, int x, int y, int z);
 void		setup(t_env *env);
 t_vec		*vec_new(void);

@@ -15,62 +15,60 @@
 
 int		deal_key(int key, t_env *env)
 {
-
+	int i = 0;
 	if (key == 53)
 	{
 		env_del(env);
 		exit(1);
 	}
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
-	render(env);
+	if (key == 123)
+		env->angle_x += PI / 30;
+	if (key == 126)
+		env->angle_y += PI / 30;
+	if (key == 124)
+		env->angle_z += PI / 30;
+	if (key == 2)
+	{
+		env->angle_x += PI / 30;
+		env->angle_y += PI / 30;
+		env->angle_z += PI / 30;
+	}
+
+	while (env->angle_x > (2 * PI))
+		env->angle_x = env->angle_x - (2 * PI);
+	while (env->angle_y > (2 * PI))
+		env->angle_y = env->angle_y - (2 * PI);
+	while (env->angle_z > (2 * PI))
+		env->angle_z = env->angle_z - (2 * PI);
+	render(env->vec, env);
 	return 0;
 }
 
-int		fdf(t_env *env)
+int		deal_mouse(int button, int x, int y, t_env *env)
+{
+	//printf("key = %d\n", button);
+	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+
+	return 0;
+}
+
+int		fdf(t_env *env, t_vec *vec)
 {
 	int i = 0;
+	int ret;
 
-	(env->vec1).x = 0;
-	(env->vec1).y = 0;
-	(env->vec1).z = 0;
-
-	(env->vec2).x = 0;
-	(env->vec2).y = 0;
-	(env->vec2).z = 0;
-
-	(env->vec3).x = 0;
-	(env->vec3).y = 0;
-	(env->vec3).z = 0;
-
-	(env->vec4).x = 0;
-	(env->vec4).y = 0;
-	(env->vec4).z = 0;
-
-	(env->vec5).x = 0;
-	(env->vec5).y = 0;
-	(env->vec5).z = 0;
-
-	(env->vec6).x = 0;
-	(env->vec6).y = 0;
-	(env->vec6).z = 0;
-
-	(env->vec7).x = 0;
-	(env->vec7).y = 0;
-	(env->vec7).z = 0;
-
-	(env->vec8).x = 0;
-	(env->vec8).y = 0;
-	(env->vec8).z = 0;
-
+	env->vec = vec_new();
 	env->width = 2560;
 	env->height = 1315;
-	setup(env);
+	env->angle_x = 0;
+	env->angle_y = 0;
+	env->angle_z = 0;
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, env->width, env->height, "FdF");
-	env->vec = vec_new();
 	map_to_struct(&env->map, env->vec);
-	vec_del(env->vec);
 	mlx_key_hook(env->win_ptr, deal_key, env);
+	mlx_mouse_hook(env->win_ptr, deal_mouse, env);
 	mlx_loop(env->mlx_ptr);
 	return (0);
 }

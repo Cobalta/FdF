@@ -16,6 +16,7 @@
 int		main(int ac, char **av)
 {
 	t_env env;
+	t_vec vec;
 
 
 	if (ac != 2) {
@@ -35,7 +36,8 @@ int		main(int ac, char **av)
 		//printf("\n");
 		i++;
 	}
-	fdf(&env);
+	fdf(&env, &vec);
 	map_del(&env.map);
+	vec_del(&vec);
 	return (0);
 }

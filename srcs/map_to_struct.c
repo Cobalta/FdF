@@ -107,7 +107,6 @@ void	map_to_struct(t_map *map, t_vec *vec)
 	int y;
 
 	y = 0;
-	t_vec *test = vec;
 	while (y < map->height)
 	{
 		x = 0;

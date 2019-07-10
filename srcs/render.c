@@ -13,164 +13,73 @@
 
 #include "../includes/fdf.h"
 
-int		map_draw(t_env *env)
+void	draw_right(t_vec *vec1, t_vec *vec2, t_env *env)
+{
+	t_seg seg;
+
+	*vec2 = vec_mult(vec2, 20);
+	*vec2 = translate(vec2, env->width/2, env->height/2, 0);
+	seg.x1 = (int)(vec1->x);
+	seg.y1 = (int)(vec1->y);
+	seg.x2 = (int)(vec2->x);
+	seg.y2 = (int)(vec2->y);
+	line_tracer(&seg, env);
+}
+
+void	draw_down(t_vec *vec1, t_vec *vec3, t_env *env)
+{
+	t_seg seg;
+
+	*vec3 = vec_mult(vec3, 20);
+	*vec3 = translate(vec3, env->width/2, env->height/2, 0);
+	seg.x1 = (int)(vec1->x);
+	seg.y1 = (int)(vec1->y);
+	seg.x2 = (int)(vec3->x);
+	seg.y2 = (int)(vec3->y);
+	line_tracer(&seg, env);
+}
+
+void	map_draw(t_vec *vec, t_env *env)
 {
 	t_vec vec1;
 	t_vec vec2;
 	t_vec vec3;
-	t_vec vec4;
-	t_vec vec5;
-	t_vec vec6;
-	t_vec vec7;
-	t_vec vec8;
-	t_seg seg1;
-
-	vec1 = project(&(env->vec1));
-	vec2 = project(&(env->vec2));
-	vec3 = project(&(env->vec3));
-	vec4 = project(&(env->vec4));
-	vec5 = project(&(env->vec5));
-	vec6 = project(&(env->vec6));
-	vec7 = project(&(env->vec7));
-	vec8 = project(&(env->vec8));
-	vec1 = vec_mult(&vec1, 800);
-	vec2 = vec_mult(&vec2, 800);
-	vec3 = vec_mult(&vec3, 800);
-	vec4 = vec_mult(&vec4, 800);
-	vec5 = vec_mult(&vec5, 800);
-	vec6 = vec_mult(&vec6, 800);
-	vec7 = vec_mult(&vec7, 800);
-	vec8 = vec_mult(&vec8, 800);
+	printf("x %f y %f z %f\n",env->angle_x, env->angle_y, env->angle_z),fflush(stdout);
+	vec1 = rotate_x(vec, env->angle_x);
+	vec1 = rotate_y(&vec1, env->angle_y);
+	vec1 = rotate_z(&vec1, env->angle_z);
+	project(&vec1);
+	vec1 = vec_mult(&vec1, 20);
 	vec1 = translate(&vec1, env->width/2, env->height/2, 0);
-	vec2 = translate(&vec2, env->width/2, env->height/2, 0);
-	vec3 = translate(&vec3, env->width/2, env->height/2, 0);
-	vec4 = translate(&vec4, env->width/2, env->height/2, 0);
-	vec5 = translate(&vec5, env->width/2, env->height/2, 0);
-	vec6 = translate(&vec6, env->width/2, env->height/2, 0);
-	vec7 = translate(&vec7, env->width/2, env->height/2, 0);
-	vec8 = translate(&vec8, env->width/2, env->height/2, 0);
-	seg1.x1 = (int)(vec1.x);
-	seg1.y1 = (int)(vec1.y);
-	seg1.x2 = (int)(vec2.x);
-	seg1.y2 = (int)(vec2.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec2.x);
-	seg1.y1 = (int)(vec2.y);
-	seg1.x2 = (int)(vec3.x);
-	seg1.y2 = (int)(vec3.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec3.x);
-	seg1.y1 = (int)(vec3.y);
-	seg1.x2 = (int)(vec4.x);
-	seg1.y2 = (int)(vec4.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec4.x);
-	seg1.y1 = (int)(vec4.y);
-	seg1.x2 = (int)(vec1.x);
-	seg1.y2 = (int)(vec1.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec5.x);
-	seg1.y1 = (int)(vec5.y);
-	seg1.x2 = (int)(vec6.x);
-	seg1.y2 = (int)(vec6.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec6.x);
-	seg1.y1 = (int)(vec6.y);
-	seg1.x2 = (int)(vec7.x);
-	seg1.y2 = (int)(vec7.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec7.x);
-	seg1.y1 = (int)(vec7.y);
-	seg1.x2 = (int)(vec8.x);
-	seg1.y2 = (int)(vec8.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec8.x);
-	seg1.y1 = (int)(vec8.y);
-	seg1.x2 = (int)(vec5.x);
-	seg1.y2 = (int)(vec5.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec1.x);
-	seg1.y1 = (int)(vec1.y);
-	seg1.x2 = (int)(vec5.x);
-	seg1.y2 = (int)(vec5.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec2.x);
-	seg1.y1 = (int)(vec2.y);
-	seg1.x2 = (int)(vec6.x);
-	seg1.y2 = (int)(vec6.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec3.x);
-	seg1.y1 = (int)(vec3.y);
-	seg1.x2 = (int)(vec7.x);
-	seg1.y2 = (int)(vec7.y);
-
-	line_tracer(&seg1, env);
-
-	seg1.x1 = (int)(vec4.x);
-	seg1.y1 = (int)(vec4.y);
-	seg1.x2 = (int)(vec8.x);
-	seg1.y2 = (int)(vec8.y);
-
-	line_tracer(&seg1, env);
-
-	return 0;
+	if (vec->right != NULL)
+	{
+		vec2 = rotate_x(vec->right, env->angle_x);
+		vec2 = rotate_y(&vec2, env->angle_y);
+		vec2 = rotate_z(&vec2, env->angle_z);
+		project(&vec2);
+		draw_right(&vec1, &vec2, env);
+	}
+	if (vec->down != NULL)
+	{
+		vec3 = rotate_x(vec->down, env->angle_x);
+		vec3 = rotate_y(&vec3, env->angle_y);
+		vec3 = rotate_z(&vec3, env->angle_z);
+		project(&vec3);
+		draw_down(&vec1, &vec3, env);
+	}
 }
 
-int		render(t_env *env)
+
+int		render(t_vec *vec, t_env *env)
 {
+	//printf("B x %f y %f z %f\n",vec->x, vec->y, vec->z),fflush(stdout);
+	while (vec->next != NULL)
+	{
+		//printf("x %f y %f z %f\n",vec->x, vec->y, vec->z),fflush(stdout);
+		map_draw(vec->next, env);
+		vec = vec->next;
+	}
 
-
-
-
-	rotate_z(&env->vec1);
-	rotate_z(&env->vec2);
-	rotate_z(&env->vec3);
-	rotate_z(&env->vec4);
-	rotate_z(&env->vec5);
-	rotate_z(&env->vec6);
-	rotate_z(&env->vec7);
-	rotate_z(&env->vec8);
-	rotate_x(&env->vec1);
-	rotate_x(&env->vec2);
-	rotate_x(&env->vec3);
-	rotate_x(&env->vec4);
-	rotate_x(&env->vec5);
-	rotate_x(&env->vec6);
-	rotate_x(&env->vec7);
-	rotate_x(&env->vec8);
-	rotate_y(&env->vec1);
-	rotate_y(&env->vec2);
-	rotate_y(&env->vec3);
-	rotate_y(&env->vec4);
-	rotate_y(&env->vec5);
-	rotate_y(&env->vec6);
-	rotate_y(&env->vec7);
-	rotate_y(&env->vec8);
-	//printf("x %f y %f z %f\n",(env->vec1).x, (env->vec1).y, (env->vec1).z);
-	//printf("x %f y %f z %f\n",(env->vec5).x, (env->vec5).y, (env->vec5).z);
-
-
-	map_draw(env);
 
 	return (0);
 }
