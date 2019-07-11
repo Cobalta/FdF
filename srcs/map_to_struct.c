@@ -43,10 +43,10 @@ void	down(t_map *map, t_vec **vec, int x, int y)
 
 void	right_down(t_map *map, t_vec **vec)
 {
-	int		x;
-	int 	y;
-	int		i;
-	t_vec	*vec_cpy;
+	int x;
+	int y;
+	int i;
+	t_vec *vec_cpy;
 
 	y = 0;
 	vec_cpy = *vec;
