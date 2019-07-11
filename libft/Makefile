@@ -27,7 +27,8 @@ SRC =	ft_puterror.c   \
         ft_strsub.c		\
         ft_strlen.c		\
         ft_strdup.c		\
-        ft_atoi.c
+        ft_atoi.c       \
+        ft_itoa.c
 
 
 all: $(NAME)

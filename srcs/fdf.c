@@ -16,31 +16,49 @@
 int		deal_key(int key, t_env *env)
 {
 	int i = 0;
+
 	if (key == 53)
 	{
 		env_del(env);
 		exit(1);
 	}
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+
 	if (key == 123)
-		env->angle_x += PI / 30;
+		env->angle_y -= 10;
 	if (key == 126)
-		env->angle_y += PI / 30;
+		env->angle_x += 10;
 	if (key == 124)
-		env->angle_z += PI / 30;
+		env->angle_y += 10;
+	if (key == 125)
+		env->angle_x -= 10;
+	if (key == 116)
+		env->angle_z += 10;
+	if (key == 121)
+		env->angle_z -= 10;
+	if (key == 69)
+		env->zoom += 5;
+	if (key == 78)
+		env->zoom -= 5;
 	if (key == 2)
 	{
 		env->angle_x = 0;
 		env->angle_y = 0;
 		env->angle_z = 0;
 	}
+	if (key == 3)
+	{
+		env->angle_x = 35;
+		env->angle_y = 30;
+		env->angle_z = -61;
+	}
 
-	while (env->angle_x > (2 * PI))
-		env->angle_x = env->angle_x - (2 * PI);
-	while (env->angle_y > (2 * PI))
-		env->angle_y = env->angle_y - (2 * PI);
-	while (env->angle_z > (2 * PI))
-		env->angle_z = env->angle_z - (2 * PI);
+//	while (env->angle_x > (2 * PI))
+//		env->angle_x = env->angle_x - (2 * PI);
+//	while (env->angle_y > (2 * PI))
+//		env->angle_y = env->angle_y - (2 * PI);
+//	while (env->angle_z > (2 * PI))
+//		env->angle_z = env->angle_z - (2 * PI);
 	render(env->vec, env);
 	return 0;
 }
@@ -61,6 +79,7 @@ int		fdf(t_env *env, t_vec *vec)
 	env->vec = vec_new();
 	env->width = 2560;
 	env->height = 1315;
+	env->zoom = 30;
 	env->angle_x = 0;
 	env->angle_y = 0;
 	env->angle_z = 0;
