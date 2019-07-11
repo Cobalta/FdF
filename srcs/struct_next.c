@@ -25,6 +25,7 @@ void	vec_next(t_vec **vec, int x, int y, int z)
 	next_vec->x = x;
 	next_vec->y = y;
 	next_vec->z = z;
+	next_vec->z1 = z;
 	new_vec->next = next_vec;
 }
 

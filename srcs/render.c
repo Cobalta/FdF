@@ -17,6 +17,8 @@ void	draw_right(t_vec *vec1, t_vec *vec2, t_env *env)
 {
 	t_seg seg;
 
+	seg.z1 = (int)(vec1->z1);
+	seg.z2 = (int)(vec2->z1);
 	*vec2 = vec_mult(vec2, 30);
 	*vec2 = translate(vec2, env->width/2, env->height/2, 0);
 	seg.x1 = (int)(vec1->x);
@@ -30,6 +32,8 @@ void	draw_down(t_vec *vec1, t_vec *vec3, t_env *env)
 {
 	t_seg seg;
 
+	seg.z1 = (int)(vec1->z1);
+	seg.z2 = (int)(vec3->z1);
 	*vec3 = vec_mult(vec3, 30);
 	*vec3 = translate(vec3, env->width/2, env->height/2, 0);
 	seg.x1 = (int)(vec1->x);
@@ -44,8 +48,9 @@ void	map_draw(t_vec *vec, t_env *env)
 	t_vec vec1;
 	t_vec vec2;
 	t_vec vec3;
-	printf("x %f y %f z %f\n",env->angle_x, env->angle_y, env->angle_z),fflush(stdout);
+	//printf("x %f y %f z %f\n",env->angle_x, env->angle_y, env->angle_z),fflush(stdout);
 	vec1 = rotate_x(vec, env->angle_x);
+	vec1.z1 = vec->z;
 	vec1 = rotate_y(&vec1, env->angle_y);
 	vec1 = rotate_z(&vec1, env->angle_z);
 	project(&vec1);
@@ -54,6 +59,7 @@ void	map_draw(t_vec *vec, t_env *env)
 	if (vec->right != NULL)
 	{
 		vec2 = rotate_x(vec->right, env->angle_x);
+		vec2.z1 = vec->right->z;
 		vec2 = rotate_y(&vec2, env->angle_y);
 		vec2 = rotate_z(&vec2, env->angle_z);
 		project(&vec2);
@@ -62,6 +68,7 @@ void	map_draw(t_vec *vec, t_env *env)
 	if (vec->down != NULL)
 	{
 		vec3 = rotate_x(vec->down, env->angle_x);
+		vec3.z1 = vec->down->z;
 		vec3 = rotate_y(&vec3, env->angle_y);
 		vec3 = rotate_z(&vec3, env->angle_z);
 		project(&vec3);

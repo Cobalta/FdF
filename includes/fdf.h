@@ -49,6 +49,6 @@ t_vec		*vec_new(void);
 void		vec_next(t_vec **vec, int x, int y ,int z);
 void		vec_del(t_vec *vec);
 void		map_to_struct(t_map *map, t_vec *vec);
-void		fill_pixel(char *img_str, int x, int y, t_env *env);
+void		fill_pixel(char *img_str, t_seg *seg, t_env *env, int sl);
 
 #endif

@@ -28,15 +28,15 @@ void	project(t_vec *vec)
 	distance = 2;
 	projection.x[0] = 1 + vec->z / 70;
 	projection.x[1] = 0;
-	projection.x[2] = 0;
+	projection.x[2] = 1;
 
 	projection.y[0] = 0;
 	projection.y[1] = 1 + vec->z / 70;
-	projection.y[2] = 0;
+	projection.y[2] = 1;
 
 	projection.z[0] = 0;
 	projection.z[1] = 0;
-	projection.z[2] = 0;
+	projection.z[2] = 1;
 
 	mtx_mult(vec, projection);
 }

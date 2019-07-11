@@ -83,22 +83,22 @@ void	right_down(t_map *map, t_vec **vec)
 //	}
 
 
-	y = 0;
-	*vec = (*vec)->next;
-	while (y < map->height)
-	{
-		int i = 0;
-		while ((*vec)->right != NULL)
-		{
-			printf("[%f] ",(*vec)->z);
-			i++;
-			*vec = (*vec)->next;
-		}
-		printf("[%f] ",(*vec)->z);
-		printf("\n");
-		*vec = (*vec)->next;
-		y++;
-	}
+//	y = 0;
+//	*vec = (*vec)->next;
+//	while (y < map->height)
+//	{
+//		int i = 0;
+//		while ((*vec)->right != NULL)
+//		{
+//			printf("[%f] ",(*vec)->z);
+//			i++;
+//			*vec = (*vec)->next;
+//		}
+//		//printf("[%f] ",(*vec)->z);
+//		//printf("\n");
+//		*vec = (*vec)->next;
+//		y++;
+//	}
 }
 
 void	map_to_struct(t_map *map, t_vec *vec)

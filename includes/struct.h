@@ -30,8 +30,10 @@ typedef struct	s_seg
 {
 	int		x1;
 	int		y1;
+	int		z1;
 	int		x2;
 	int		y2;
+	int		z2;
 	void	*next;
 }				t_seg;
 
@@ -47,9 +49,10 @@ typedef	struct	s_vec
 	double 	x;
 	double  y;
 	double 	z;
-	void	*right;
-	void	*down;
-	void	*next;
+	int 	z1;
+	struct s_vec	*right;
+	struct s_vec	*down;
+	struct s_vec	*next;
 }				t_vec;
 
 typedef	struct	s_mtx
@@ -86,6 +89,15 @@ typedef struct	s_env
 	t_img	*img;
 	void	*img_pptr;
 	t_vec	*vec;
+	float		R1;
+	float		G1;
+	float		B1;
+	float		R2;
+	float		G2;
+	float		B2;
+	float		R;
+	float		G;
+	float		B;
 }				t_env;
 
 
