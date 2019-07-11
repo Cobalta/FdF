@@ -27,9 +27,22 @@ static void	linewriter1(t_line *line, t_seg *seg, t_env *env)
 	px1 = line->px;
 	py1 = line->py;
 	img_str = mlx_get_data_addr(env->img_pptr, &(bpp), &(sl), &(endian));
+
+	env->R1 = 148;
+	env->R = 148;
+	env->R2 = 255;
+
+	env->G1 = 0;
+	env->G = 0;
+	env->G2 = 255;
+
+	env->B1 = 211;
+	env->B = 211;
+	env->B2 = 0;
+
 	while (i <= px1)
 	{
-		fill_pixel(img_str, seg->x1, seg->y1, env);
+		fill_pixel(img_str, seg, env, px1);
 		i++;
 		seg->x1 += line->x_incr;
 		line->px -= line->dy;
@@ -56,9 +69,21 @@ static void	linewriter2(t_line *line, t_seg *seg, t_env *env)
 	py1 = line->py;
 
 	img_str = mlx_get_data_addr(env->img_pptr, &(bpp), &(sl), &(endian));
+
+	env->R1 = 148;
+	env->R = 148;
+	env->R2 = 255;
+
+	env->G1 = 0;
+	env->G = 0;
+	env->G2 = 255;
+
+	env->B1 = 211;
+	env->B = 211;
+	env->B2 = 0;
 	while (i <= py1)
 	{
-		fill_pixel(img_str, seg->x1, seg->y1, env);
+		fill_pixel(img_str, seg, env, py1);
 		i++;
 		seg->y1 += line->y_incr;
 		line->py -= line->dx;

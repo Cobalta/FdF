@@ -25,6 +25,7 @@ t_vec		*vec_new(void)
 	new_vec->x = 0;
 	new_vec->y = 0;
 	new_vec->z = 0;
+	new_vec->z1 = 0;
 	return (new_vec);
 }
 
