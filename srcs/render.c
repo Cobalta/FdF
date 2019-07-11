@@ -17,13 +17,9 @@ void	draw_right(t_vec *vec1, t_vec *vec2, t_env *env)
 {
 	t_seg seg;
 
-<<<<<<< HEAD
 	seg.z1 = (int)(vec1->z1);
 	seg.z2 = (int)(vec2->z1);
-	*vec2 = vec_mult(vec2, 30);
-=======
 	*vec2 = vec_mult(vec2, env->zoom);
->>>>>>> d49a1cce3d4a2ebf95bebb63fe1d5a9dd1193b8e
 	*vec2 = translate(vec2, env->width/2, env->height/2, 0);
 	seg.x1 = (int)(vec1->x);
 	seg.y1 = (int)(vec1->y);

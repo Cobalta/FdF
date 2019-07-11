@@ -31,9 +31,9 @@ void	gradients(t_env *env, int sl, int z) {
 		Bres = (env->B2 - env->B1) / (sl + 1);
 //	while (i < z)
 //	{
-//		env->R += Rres;
-//		env->G += Gres;
-//		env->B += Bres;
+		env->R += Rres;
+		env->G += Gres;
+		env->B += Bres;
 //		i++;
 //	}
 	printf("%d\n", z);
@@ -45,7 +45,7 @@ void	fill_pixel(char *img_str, t_seg *seg, t_env *env, int sl)
 	int pos;
 	int i;
 	//printf("1 %d\n2 %d\n", seg->z1, seg->z2);
-	//gradients(env, sl, (seg->z2 - seg->z1));
+	gradients(env, sl, (seg->z2 - seg->z1));
 	pos = 0;
 	pos = (pos + 4 * env->width) * seg->y1;
 	pos += 4 * seg->x1;
