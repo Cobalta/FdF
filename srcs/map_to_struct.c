@@ -112,7 +112,7 @@ void	map_to_struct(t_map *map, t_vec *vec)
 		x = 0;
 		while (x < map->width)
 		{
-			vec_next(&vec, x, y, map->map[y][x]);
+			vec_next(&vec, x, y, map->map[y][x], map);
 			x++;
 		}
 		y++;

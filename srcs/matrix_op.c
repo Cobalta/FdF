@@ -26,13 +26,13 @@ void	project(t_vec *vec)
 	float distance;
 
 	distance = 2;
-	projection.x[0] = 1 + vec->z / 70;
+	projection.x[0] = 1 + vec->z / 100;
 	projection.x[1] = 0;
 	projection.x[2] = 1;
 
 	projection.y[0] = 0;
-	projection.y[1] = 1 + vec->z / 70;
-	projection.y[2] = 1;
+	projection.y[1] = 1 + vec->z / 100;
+	projection.y[2] = 0;
 
 	projection.z[0] = 0;
 	projection.z[1] = 0;
@@ -62,15 +62,19 @@ t_vec translate(t_vec *vec, int x, int y, int z)
 	return (res);
 }
 
-t_vec	rotate_x(t_vec *vec, float angle)
+t_vec	rotate_x(t_vec *vec, float iter)
 {
 	t_mtx rot;
 	t_vec res;
+	float angle;
 
+	if (iter > 0)
+		angle = 0.01;
+	else
+		angle = -0.01;
 	res.x = vec->x;
 	res.y = vec->y;
 	res.z = vec->z;
-
 	rot.x[0] = 1;
 	rot.y[0] = 0;
 	rot.z[0] = 0;
@@ -80,20 +84,30 @@ t_vec	rotate_x(t_vec *vec, float angle)
 	rot.x[2] = 0;
 	rot.y[2] = sin(angle);
 	rot.z[2] = cos(angle);
-
-	mtx_mult(&res, rot);
+	while (fabsf(iter) > 0)
+	{
+		mtx_mult(&res, rot);
+		if (iter > 0)
+			iter--;
+		if (iter < 0)
+			iter++;
+	}
 	return (res);
 }
 
-t_vec	rotate_y(t_vec *vec, float angle)
+t_vec	rotate_y(t_vec *vec, float iter)
 {
 	t_mtx rot;
 	t_vec res;
+	float angle;
 
+	if (iter > 0)
+		angle = 0.01;
+	else
+		angle = -0.01;
 	res.x = vec->x;
 	res.y = vec->y;
 	res.z = vec->z;
-
 	rot.x[0] = cos(angle);
 	rot.y[0] = 0;
 	rot.z[0] = sin(angle);
@@ -103,20 +117,30 @@ t_vec	rotate_y(t_vec *vec, float angle)
 	rot.x[2] = -sin(angle);
 	rot.y[2] = 0;
 	rot.z[2] = cos(angle);
-
-	mtx_mult(&res, rot);
+	while (fabsf(iter) > 0)
+	{
+		mtx_mult(&res, rot);
+		if (iter > 0)
+			iter--;
+		if (iter < 0)
+			iter++;
+	}
 	return (res);
 }
 
-t_vec	rotate_z(t_vec *vec, float angle)
+t_vec	rotate_z(t_vec *vec, float iter)
 {
 	t_mtx rot;
 	t_vec res;
+	float angle;
 
+	if (iter > 0)
+		angle = 0.01;
+	else
+		angle = -0.01;
 	res.x = vec->x;
 	res.y = vec->y;
 	res.z = vec->z;
-
 	rot.x[0] = cos(angle);
 	rot.y[0] = -sin(angle);
 	rot.z[0] = 0;
@@ -126,7 +150,13 @@ t_vec	rotate_z(t_vec *vec, float angle)
 	rot.x[2] = 0;
 	rot.y[2] = 0;
 	rot.z[2] = 1;
-
-	mtx_mult(&res, rot);
+	while (fabsf(iter) > 0)
+	{
+		mtx_mult(&res, rot);
+		if (iter > 0)
+			iter--;
+		if (iter < 0)
+			iter++;
+	}
 	return (res);
 }

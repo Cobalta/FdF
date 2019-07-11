@@ -85,6 +85,7 @@ typedef struct	s_env
 	float	angle_x;
 	float	angle_y;
 	float	angle_z;
+	int		zoom;
 	t_map	map;
 	t_img	*img;
 	void	*img_pptr;

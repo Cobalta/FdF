@@ -13,7 +13,7 @@
 
 #include "../includes/fdf.h"
 
-void	vec_next(t_vec **vec, int x, int y, int z)
+void	vec_next(t_vec **vec, int x, int y, int z, t_map *map)
 {
 	t_vec	*next_vec;
 	t_vec	*new_vec;
@@ -22,9 +22,9 @@ void	vec_next(t_vec **vec, int x, int y, int z)
 	while (new_vec->next != NULL)
 		new_vec = new_vec->next;
 	next_vec = vec_new();
-	next_vec->x = x;
-	next_vec->y = y;
-	next_vec->z = z;
+	next_vec->x = x - map->width/2;
+	next_vec->y = y - map->height/2;
+	next_vec->z = z / 10;
 	next_vec->z1 = z;
 	new_vec->next = next_vec;
 }

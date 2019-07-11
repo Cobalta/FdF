@@ -17,9 +17,13 @@ void	draw_right(t_vec *vec1, t_vec *vec2, t_env *env)
 {
 	t_seg seg;
 
+<<<<<<< HEAD
 	seg.z1 = (int)(vec1->z1);
 	seg.z2 = (int)(vec2->z1);
 	*vec2 = vec_mult(vec2, 30);
+=======
+	*vec2 = vec_mult(vec2, env->zoom);
+>>>>>>> d49a1cce3d4a2ebf95bebb63fe1d5a9dd1193b8e
 	*vec2 = translate(vec2, env->width/2, env->height/2, 0);
 	seg.x1 = (int)(vec1->x);
 	seg.y1 = (int)(vec1->y);
@@ -34,7 +38,7 @@ void	draw_down(t_vec *vec1, t_vec *vec3, t_env *env)
 
 	seg.z1 = (int)(vec1->z1);
 	seg.z2 = (int)(vec3->z1);
-	*vec3 = vec_mult(vec3, 30);
+	*vec3 = vec_mult(vec3, env->zoom);
 	*vec3 = translate(vec3, env->width/2, env->height/2, 0);
 	seg.x1 = (int)(vec1->x);
 	seg.y1 = (int)(vec1->y);
@@ -54,7 +58,7 @@ void	map_draw(t_vec *vec, t_env *env)
 	vec1 = rotate_y(&vec1, env->angle_y);
 	vec1 = rotate_z(&vec1, env->angle_z);
 	project(&vec1);
-	vec1 = vec_mult(&vec1, 30);
+	vec1 = vec_mult(&vec1, env->zoom);
 	vec1 = translate(&vec1, env->width/2, env->height/2, 0);
 	if (vec->right != NULL)
 	{
@@ -89,6 +93,12 @@ int		render(t_vec *vec, t_env *env)
 	}
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_pptr, 0, 0);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, 50, 100, 0xa020f0, "X");
+	mlx_string_put(env->mlx_ptr, env->win_ptr, 100, 100, 0xa020f0, ft_itoa(env->angle_x));
+	mlx_string_put(env->mlx_ptr, env->win_ptr, 50, 150, 0xa020f0, "Y");
+	mlx_string_put(env->mlx_ptr, env->win_ptr, 100, 150, 0xa020f0, ft_itoa(env->angle_y));
+	mlx_string_put(env->mlx_ptr, env->win_ptr, 50, 200, 0xa020f0, "Z");
+	mlx_string_put(env->mlx_ptr, env->win_ptr, 100, 200, 0xa020f0, ft_itoa(env->angle_z));
 	mlx_destroy_image(env->mlx_ptr, env->img_pptr);
 	env->img_pptr = mlx_new_image(env->mlx_ptr, env->width, env->height);
 	return (0);
