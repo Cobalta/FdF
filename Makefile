@@ -25,7 +25,8 @@ SRCS =	srcs/main.c 			\
 		srcs/matrix_op.c        \
 		srcs/setup.c            \
 		srcs/map_to_struct.c	\
-		srcs/fill_pixel.c
+		srcs/fill_pixel.c		\
+		srcs/get_gradient.c
 
 
 OBJS = $(SRCS:.c=.o)

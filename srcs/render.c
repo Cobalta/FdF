@@ -48,29 +48,32 @@ void	map_draw(t_vec *vec, t_env *env)
 	t_vec vec1;
 	t_vec vec2;
 	t_vec vec3;
-	//printf("x %f y %f z %f\n",env->angle_x, env->angle_y, env->angle_z),fflush(stdout);
+
+	env->z1 = vec->z;
 	vec1 = rotate_x(vec, env->angle_x);
-	vec1.z1 = vec->z;
 	vec1 = rotate_y(&vec1, env->angle_y);
 	vec1 = rotate_z(&vec1, env->angle_z);
+	vec1.z1 = vec->z;
 	project(&vec1);
 	vec1 = vec_mult(&vec1, env->zoom);
 	vec1 = translate(&vec1, env->width/2, env->height/2, 0);
 	if (vec->right != NULL)
 	{
+		env->z2 = vec->right->z;
 		vec2 = rotate_x(vec->right, env->angle_x);
-		vec2.z1 = vec->right->z;
 		vec2 = rotate_y(&vec2, env->angle_y);
 		vec2 = rotate_z(&vec2, env->angle_z);
+		vec2.z1 = vec->right->z;
 		project(&vec2);
 		draw_right(&vec1, &vec2, env);
 	}
 	if (vec->down != NULL)
 	{
+		env->z2 = vec->down->z;
 		vec3 = rotate_x(vec->down, env->angle_x);
-		vec3.z1 = vec->down->z;
 		vec3 = rotate_y(&vec3, env->angle_y);
 		vec3 = rotate_z(&vec3, env->angle_z);
+		vec3.z1 = vec->down->z;
 		project(&vec3);
 		draw_down(&vec1, &vec3, env);
 	}

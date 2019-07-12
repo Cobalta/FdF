@@ -52,7 +52,7 @@ int		deal_key(int key, t_env *env)
 		env->angle_y = 30;
 		env->angle_z = -61;
 	}
-
+	env->slmax = (env->zoom * env->map.zmax)/2;
 //	while (env->angle_x > (2 * PI))
 //		env->angle_x = env->angle_x - (2 * PI);
 //	while (env->angle_y > (2 * PI))
@@ -79,7 +79,7 @@ int		fdf(t_env *env, t_vec *vec)
 	env->vec = vec_new();
 	env->width = 2560;
 	env->height = 1315;
-	env->zoom = 1;
+	env->zoom = 30;
 	env->angle_x = 0;
 	env->angle_y = 0;
 	env->angle_z = 0;
@@ -87,6 +87,7 @@ int		fdf(t_env *env, t_vec *vec)
 	env->win_ptr = mlx_new_window(env->mlx_ptr, env->width, env->height, "FdF");
 	env->img_pptr = mlx_new_image(env->mlx_ptr, env->width, env->height);
 	map_to_struct(&env->map, env->vec);
+	env->slmax = env->map.zmax * env->zoom;
 	mlx_key_hook(env->win_ptr, deal_key, env);
 	mlx_mouse_hook(env->win_ptr, deal_mouse, env);
 	mlx_loop(env->mlx_ptr);

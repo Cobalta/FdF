@@ -39,10 +39,10 @@ static void	linewriter1(t_line *line, t_seg *seg, t_env *env)
 	env->B1 = 211;
 	env->B = 211;
 	env->B2 = 0;
-
+	get_gradient(env, px1, seg);
 	while (i <= px1)
 	{
-		fill_pixel(img_str, seg, env, px1);
+		fill_pixel(img_str, seg, env);
 		i++;
 		seg->x1 += line->x_incr;
 		line->px -= line->dy;
@@ -81,9 +81,10 @@ static void	linewriter2(t_line *line, t_seg *seg, t_env *env)
 	env->B1 = 211;
 	env->B = 211;
 	env->B2 = 0;
+	get_gradient(env, py1, seg);
 	while (i <= py1)
 	{
-		fill_pixel(img_str, seg, env, py1);
+		fill_pixel(img_str, seg, env);
 		i++;
 		seg->y1 += line->y_incr;
 		line->py -= line->dx;
@@ -99,6 +100,7 @@ static void	linewriter2(t_line *line, t_seg *seg, t_env *env)
 void	line_tracer(t_seg *seg, t_env *env)
 {
 	t_line line;
+
 	line.px = abs(seg->x2 - seg->x1);
 	line.py = abs(seg->y2 - seg->y1);
 	line.x_incr = 1;
