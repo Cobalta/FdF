@@ -99,6 +99,8 @@ typedef struct	s_env
 	float		R;
 	float		G;
 	float		B;
+	float		alt;
+	int			iso;
 }				t_env;
 
 

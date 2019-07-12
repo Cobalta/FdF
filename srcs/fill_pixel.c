@@ -36,7 +36,7 @@ void	gradients(t_env *env, int sl, int z) {
 		env->B += Bres;
 //		i++;
 //	}
-	printf("%d\n", z);
+	//printf("%d\n", z);
 	//printf("res = %f\nr1 : %f\nr2 : %f\nr : %f\n\n", res,env->G1, env->G2, env->G);
 }
 

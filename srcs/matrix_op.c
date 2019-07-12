@@ -26,55 +26,27 @@ void	project(t_vec *vec)
 	float distance;
 
 	distance = 2;
-	projection.x[0] = 1 + vec->z / 100;
+	projection.x[0] = 1 + vec->z / 1000;
 	projection.x[1] = 0;
 	projection.x[2] = 1;
-
 	projection.y[0] = 0;
-	projection.y[1] = 1 + vec->z / 100;
+	projection.y[1] = 1 + vec->z / 1000;
 	projection.y[2] = 0;
-
 	projection.z[0] = 0;
 	projection.z[1] = 0;
 	projection.z[2] = 1;
-
 	mtx_mult(vec, projection);
 }
 
-t_vec vec_mult(t_vec *vec, int mult)
-{
-	t_vec res;
-
-	res.x = vec->x * mult;
-	res.y = vec->y * mult;
-	res.z = vec->z * mult;
-
-	return (res);
-}
-
-t_vec translate(t_vec *vec, int x, int y, int z)
-{
-	t_vec res;
-
-	res.x = vec->x + x;
-	res.y = vec->y + y;
-	res.z = vec->z + z;
-	return (res);
-}
-
-t_vec	rotate_x(t_vec *vec, float iter)
+void	rotate_x(t_vec *vec, float iter)
 {
 	t_mtx rot;
-	t_vec res;
 	float angle;
 
 	if (iter > 0)
-		angle = 0.01;
+		angle = PI / 32;
 	else
-		angle = -0.01;
-	res.x = vec->x;
-	res.y = vec->y;
-	res.z = vec->z;
+		angle = -PI / 32;
 	rot.x[0] = 1;
 	rot.y[0] = 0;
 	rot.z[0] = 0;
@@ -86,28 +58,23 @@ t_vec	rotate_x(t_vec *vec, float iter)
 	rot.z[2] = cos(angle);
 	while (fabsf(iter) > 0)
 	{
-		mtx_mult(&res, rot);
+		mtx_mult(vec, rot);
 		if (iter > 0)
 			iter--;
 		if (iter < 0)
 			iter++;
 	}
-	return (res);
 }
 
-t_vec	rotate_y(t_vec *vec, float iter)
+void	rotate_y(t_vec *vec, float iter)
 {
 	t_mtx rot;
-	t_vec res;
 	float angle;
 
 	if (iter > 0)
-		angle = 0.01;
+		angle = PI / 32;
 	else
-		angle = -0.01;
-	res.x = vec->x;
-	res.y = vec->y;
-	res.z = vec->z;
+		angle = -PI / 32;
 	rot.x[0] = cos(angle);
 	rot.y[0] = 0;
 	rot.z[0] = sin(angle);
@@ -119,28 +86,23 @@ t_vec	rotate_y(t_vec *vec, float iter)
 	rot.z[2] = cos(angle);
 	while (fabsf(iter) > 0)
 	{
-		mtx_mult(&res, rot);
+		mtx_mult(vec, rot);
 		if (iter > 0)
 			iter--;
 		if (iter < 0)
 			iter++;
 	}
-	return (res);
 }
 
-t_vec	rotate_z(t_vec *vec, float iter)
+void	rotate_z(t_vec *vec, float iter)
 {
 	t_mtx rot;
-	t_vec res;
 	float angle;
 
 	if (iter > 0)
-		angle = 0.01;
+		angle = PI / 32;
 	else
-		angle = -0.01;
-	res.x = vec->x;
-	res.y = vec->y;
-	res.z = vec->z;
+		angle = -PI / 32;
 	rot.x[0] = cos(angle);
 	rot.y[0] = -sin(angle);
 	rot.z[0] = 0;
@@ -152,11 +114,13 @@ t_vec	rotate_z(t_vec *vec, float iter)
 	rot.z[2] = 1;
 	while (fabsf(iter) > 0)
 	{
-		mtx_mult(&res, rot);
+		mtx_mult(vec, rot);
 		if (iter > 0)
 			iter--;
 		if (iter < 0)
 			iter++;
 	}
-	return (res);
 }
+
+
+
