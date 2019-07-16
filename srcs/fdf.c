@@ -79,7 +79,7 @@ int		fdf(t_env *env, t_vec *vec)
 	env->vec = vec_new();
 	env->width = 2560;
 	env->height = 1315;
-	env->zoom = 30;
+	env->zoom = 1;
 	env->angle_x = 0;
 	env->angle_y = 0;
 	env->angle_z = 0;

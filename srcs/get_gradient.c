@@ -37,7 +37,7 @@ void	get_gradient(t_env *env, int sl, t_seg *seg)
 		percent = env->z1 / env->map.zmax;
 		env->R += (env->R2 - env->R1) * percent;
 
-		printf("env->Rres : %f\nenv->z1 : %f\nenv->R : %f\npercent : %f\nsl : %d\n\n",env->Rres,env->z1,env->R,percent,sl);
+		//printf("env->Rres : %f\nenv->z1 : %f\nenv->R : %f\npercent : %f\nsl : %d\n\n",env->Rres,env->z1,env->R,percent,sl);
 
 		percent = env->z1 / env->map.zmax;
 		env->G += ((env->G2 - env->G1) * percent);
