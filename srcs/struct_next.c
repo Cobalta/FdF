@@ -13,7 +13,7 @@
 
 #include "../includes/fdf.h"
 
-void	vec_next(t_vec **vec, int x, int y, int z, t_map *map)
+void	vec_next(t_vec **vec, int x, int y, float z, t_map *map)
 {
 	t_vec	*next_vec;
 	t_vec	*new_vec;

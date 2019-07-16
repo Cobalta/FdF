@@ -38,7 +38,7 @@ static void	linewriter1(t_line *line, t_seg *seg, t_env *env)
 
 	env->B1 = 0;
 	env->B = 0;
-	env->B2 = 255;;
+	env->B2 = 255;
 	get_gradient(env, px1, seg);
 	while (i <= px1)
 	{

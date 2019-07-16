@@ -19,7 +19,6 @@ void	gradients(t_env *env, t_seg *seg) {
 
 	i = 0;
 	z = 0;
-
 	if (env->z1 < env->z2)
 	{
 		env->R += env->Rres;

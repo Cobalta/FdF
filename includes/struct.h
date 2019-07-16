@@ -100,12 +100,13 @@ typedef struct	s_env
 	float		R;
 	float		G;
 	float		B;
+	float		alt;
+	int			iso;
 	float		z1;
 	float		z2;
 	float		Rres;
 	float		Gres;
 	float		Bres;
-	int			slmax;
 }				t_env;
 
 

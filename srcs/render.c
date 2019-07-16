@@ -13,34 +13,64 @@
 
 #include "../includes/fdf.h"
 
-void	draw_right(t_vec *vec1, t_vec *vec2, t_env *env)
+void	draw_line(t_vec *vec1, t_vec *vec2, t_env *env)
 {
 	t_seg seg;
 
 	seg.z1 = (int)(vec1->z1);
 	seg.z2 = (int)(vec2->z1);
-	*vec2 = vec_mult(vec2, env->zoom);
-	*vec2 = translate(vec2, env->width/2, env->height/2, 0);
-	seg.x1 = (int)(vec1->x);
-	seg.y1 = (int)(vec1->y);
-	seg.x2 = (int)(vec2->x);
-	seg.y2 = (int)(vec2->y);
-	line_tracer(&seg, env);
+	vec_mult(vec2, env->zoom);
+	translate(vec2, env->width/2, env->height/2, 0);
+	if ((vec1->x < env->width && vec1->x > 0) && (vec1->y < env->height && vec1->y > 0))
+		if ((vec2->x < env->width && vec2->x > 0) && (vec2->y < env->height && vec2->y > 0))
+		{
+			seg.x1 = (int)(vec1->x);
+			seg.y1 = (int)(vec1->y);
+			seg.x2 = (int)(vec2->x);
+			seg.y2 = (int)(vec2->y);
+			line_tracer(&seg, env);
+		}
 }
 
-void	draw_down(t_vec *vec1, t_vec *vec3, t_env *env)
+void	rotater(t_vec *vec1, t_vec *vec2, t_vec *vec3, t_env *env)
 {
-	t_seg seg;
+	rotate_y(vec1, env->angle_y);
+	rotate_x(vec1, env->angle_x);
+	rotate_z(vec1, env->angle_z);
+	if (vec2 != NULL)
+	{
+		rotate_y(vec2, env->angle_y);
+		rotate_x(vec2, env->angle_x);
+		rotate_z(vec2, env->angle_z);
+	}
+	if (vec3 != NULL)
+	{
+		rotate_y(vec3, env->angle_y);
+		rotate_x(vec3, env->angle_x);
+		rotate_z(vec3, env->angle_z);
+	}
+}
 
-	seg.z1 = (int)(vec1->z1);
-	seg.z2 = (int)(vec3->z1);
-	*vec3 = vec_mult(vec3, env->zoom);
-	*vec3 = translate(vec3, env->width/2, env->height/2, 0);
-	seg.x1 = (int)(vec1->x);
-	seg.y1 = (int)(vec1->y);
-	seg.x2 = (int)(vec3->x);
-	seg.y2 = (int)(vec3->y);
-	line_tracer(&seg, env);
+void	projecter(t_vec *vec1, t_vec *vec2, t_vec *vec3, t_env *env)
+{
+	if (env->iso == 1)
+		iso(vec1);
+	else
+		project(vec1);
+	if (vec2 != NULL)
+	{
+		if (env->iso == 1)
+			iso(vec2);
+		else
+			project(vec2);
+	}
+	if (vec3 != NULL)
+	{
+		if (env->iso == 1)
+			iso(vec3);
+		else
+			project(vec3);
+	}
 }
 
 void	map_draw(t_vec *vec, t_env *env)
@@ -48,35 +78,36 @@ void	map_draw(t_vec *vec, t_env *env)
 	t_vec vec1;
 	t_vec vec2;
 	t_vec vec3;
-
+	//printf("x %f y %f z %f\n",env->angle_x, env->angle_y, env->angle_z),fflush(stdout);
+	vec1 = vec_cpy(vec);
+	vec1.z *= env->alt;
+	if (vec->right != NULL)
+	{
+		vec2 = vec_cpy(vec->right);
+		vec2.z *= env->alt;
+	}
+	if (vec->down != NULL)
+	{
+		vec3 = vec_cpy(vec->down);
+		vec3.z *= env->alt;
+	}
+	if (env->iso == 0)
+		rotater(&vec1, &vec2, &vec3, env);
+	projecter(&vec1, &vec2, &vec3, env);
+	vec_mult(&vec1, env->zoom);
+	translate(&vec1, env->width/2, env->height/2, 0);
 	env->z1 = vec->z;
-	vec1 = rotate_x(vec, env->angle_x);
-	vec1 = rotate_y(&vec1, env->angle_y);
-	vec1 = rotate_z(&vec1, env->angle_z);
-	vec1.z1 = vec->z;
-	project(&vec1);
-	vec1 = vec_mult(&vec1, env->zoom);
-	vec1 = translate(&vec1, env->width/2, env->height/2, 0);
 	if (vec->right != NULL)
 	{
 		env->z2 = vec->right->z;
-		vec2 = rotate_x(vec->right, env->angle_x);
-		vec2 = rotate_y(&vec2, env->angle_y);
-		vec2 = rotate_z(&vec2, env->angle_z);
-		vec2.z1 = vec->right->z;
-		project(&vec2);
-		draw_right(&vec1, &vec2, env);
+		draw_line(&vec1, &vec2, env);
 	}
 	if (vec->down != NULL)
 	{
 		env->z2 = vec->down->z;
-		vec3 = rotate_x(vec->down, env->angle_x);
-		vec3 = rotate_y(&vec3, env->angle_y);
-		vec3 = rotate_z(&vec3, env->angle_z);
-		vec3.z1 = vec->down->z;
-		project(&vec3);
-		draw_down(&vec1, &vec3, env);
+		draw_line(&vec1, &vec3, env);
 	}
+
 }
 
 
