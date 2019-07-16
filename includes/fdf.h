@@ -49,9 +49,10 @@ t_vec		*vec_new(void);
 void		vec_next(t_vec **vec, int x, int y ,float z, t_map *map);
 void		vec_del(t_vec *vec);
 void		map_to_struct(t_map *map, t_vec *vec);
-void		fill_pixel(char *img_str, t_seg *seg, t_env *env, int sl);
 void		anglekey(int key, t_env *env);
 void		iso(t_vec *vec);
 t_vec		vec_cpy(t_vec *vec);
+void		fill_pixel(char *img_str, t_seg *seg, t_env *env);
+void		get_gradient(t_env *env, int sl, t_seg *seg);
 
 #endif

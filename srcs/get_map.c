@@ -39,31 +39,38 @@ int		get_nb(char *line)
 	return (nb);
 }
 
+void	operation(int *i)
+{
+	i[2] = i[2] + i[1];
+	i[1] = 0;
+	i[0]++;
+}
+
 int		*line_convert(char *line, t_map *map)
 {
-	int		i;
-	int		y;
-	int		u = 0;
+	int		i[3];
 	int		*int_line;
 	char	*tmp;
 
-	i = 0;
-	y = 0;
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
 	if (!(int_line = (int *)malloc(sizeof(int) * get_nb(line) + 1)))
 		return 0;
 	map->width = get_nb(line);
-	while (i < get_nb(line))
+	while (i[0] < get_nb(line))
 	{
-		while (line[u] == ' ')
-			u++;
-		while ((line[y + u] >= '0' && line[y + u] <= '9') || line[y + u] == '-' || line[y + u] == '+')
-			y++;
-		tmp = ft_strsub(line, u, y);
-		int_line[i] = ft_atoi(tmp);
+		while (line[i[2]] == ' ')
+			i[2]++;
+		while ((line[i[1] + i[2]] >= '0' && line[i[1] + i[2]] <= '9')
+			|| line[i[1] + i[2]] == '-' || line[i[1] + i[2]] == '+')
+			i[1]++;
+		tmp = ft_strsub(line, i[2], i[1]);
+		int_line[i[0]] = ft_atoi(tmp);
+		if (int_line[i[0]] > map->zmax)
+			map->zmax = int_line[i[0]];
 		free(tmp);
-		u = u + y;
-		y = 0;
-		i++;
+		operation(i);
 	}
 	return int_line;
 }
@@ -96,6 +103,7 @@ void	get_map(char *av, t_map *map)
 	char		*line;
 	int			fd;
 
+	map->zmax = 0;
 	if ((fd = open(av, O_RDONLY)) < 0)
 		ft_puterror("Invalid map\nusage : ./fdf <valid map>");
 	map_line = map_line_new();

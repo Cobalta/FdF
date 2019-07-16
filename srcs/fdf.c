@@ -12,6 +12,7 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
 void	anglecheck(t_env *env)
 {
 	if (env->angle_x > 32)

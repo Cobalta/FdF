@@ -96,10 +96,18 @@ void	map_draw(t_vec *vec, t_env *env)
 	projecter(&vec1, &vec2, &vec3, env);
 	vec_mult(&vec1, env->zoom);
 	translate(&vec1, env->width/2, env->height/2, 0);
+	env->z1 = vec->z;
 	if (vec->right != NULL)
+	{
+		env->z2 = vec->right->z;
 		draw_line(&vec1, &vec2, env);
+	}
 	if (vec->down != NULL)
+	{
+		env->z2 = vec->down->z;
 		draw_line(&vec1, &vec3, env);
+	}
+
 }
 
 

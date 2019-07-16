@@ -13,39 +13,32 @@
 
 #include "../includes/fdf.h"
 
-void	gradients(t_env *env, int sl, int z) {
+void	gradients(t_env *env, t_seg *seg) {
 	int		i;
-	float	Rres;
-	float	Gres;
-	float	Bres;
+	int		z;
 
 	i = 0;
-	Rres = 0;
-	Gres = 0;
-	Bres = 0;
-	if ((env->R1 < env->R2) || (env->R1 > env->R2))
-		Rres = (env->R2 - env->R1) / (sl + 1);
-	if ((env->G1 < env->G2) || (env->G1 > env->G2))
-		Gres = (env->G2 - env->G1) / (sl + 1);
-	if ((env->B1 < env->B2) || (env->B1 > env->B2))
-		Bres = (env->B2 - env->B1) / (sl + 1);
-//	while (i < z)
-//	{
-		env->R += Rres;
-		env->G += Gres;
-		env->B += Bres;
-//		i++;
-//	}
-	//printf("%d\n", z);
-	//printf("res = %f\nr1 : %f\nr2 : %f\nr : %f\n\n", res,env->G1, env->G2, env->G);
+	z = 0;
+	if (env->z1 < env->z2)
+	{
+		env->R += env->Rres;
+		env->G += env->Gres;
+		env->B += env->Bres;
+	}
+	else if (env->z1 > env->z2)
+	{
+		env->R -= env->Rres;
+		env->G -= env->Gres;
+		env->B -= env->Bres;
+	}
 }
 
-void	fill_pixel(char *img_str, t_seg *seg, t_env *env, int sl)
+void	fill_pixel(char *img_str, t_seg *seg, t_env *env)
 {
 	int pos;
 	int i;
-	//printf("1 %d\n2 %d\n", seg->z1, seg->z2);
-	gradients(env, sl, (seg->z2 - seg->z1));
+//	printf("1 %f\n2 %f\n", seg->z1, seg->z2);
+	gradients(env, seg);
 	pos = 0;
 	pos = (pos + 4 * env->width) * seg->y1;
 	pos += 4 * seg->x1;

@@ -30,10 +30,10 @@ typedef struct	s_seg
 {
 	int		x1;
 	int		y1;
-	int		z1;
+	float	z1;
 	int		x2;
 	int		y2;
-	int		z2;
+	float	z2;
 	void	*next;
 }				t_seg;
 
@@ -64,9 +64,10 @@ typedef	struct	s_mtx
 
 typedef struct	s_map
 {
-	int		**map;
-	int		width;
-	int		height;
+	int			**map;
+	int			width;
+	int			height;
+	float		zmax;
 }				t_map;
 
 typedef struct	s_img
@@ -101,6 +102,11 @@ typedef struct	s_env
 	float		B;
 	float		alt;
 	int			iso;
+	float		z1;
+	float		z2;
+	float		Rres;
+	float		Gres;
+	float		Bres;
 }				t_env;
 
 

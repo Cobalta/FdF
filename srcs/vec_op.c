@@ -45,6 +45,5 @@ t_vec	vec_cpy(t_vec *vec)
 	cpy.x = vec->x;
 	cpy.y = vec->y;
 	cpy.z = vec->z;
-	cpy.z1 = vec->z;
 	return (cpy);
 }
