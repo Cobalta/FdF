@@ -48,6 +48,8 @@ void	anglekey(int key, t_env *env)
 		env->angle_x = 0;
 		env->angle_y = 0;
 		env->angle_z = 0;
+		env->alt = 0.5;
+		env->zoom = 10;
 	}
 	anglecheck(env);
 	if (key == 3)
@@ -58,8 +60,6 @@ void	anglekey(int key, t_env *env)
 
 int		deal_key(int key, t_env *env)
 {
-	int i = 0;
-
 	if (key == 53)
 	{
 		env_del(env);
@@ -71,22 +71,40 @@ int		deal_key(int key, t_env *env)
 		env->alt += 0.1;
 	if (key == 35)
 		env->alt -= 0.1;
-	if (key == 69)
-		env->zoom += 5;
-	if (key == 78)
-		env->zoom -= 5;
-	render(env->vec, env);
+	if (key == 46)
+	{
+		if (env->menu == 0)
+			env->menu = 1;
+		else
+			env->menu = 0;
+	}
+	if (key == 86)
+		env->pan_x -= 30;
+	if (key == 88)
+		env->pan_x += 30;
+	if (key == 84)
+		env->pan_y += 30;
+	if (key == 91)
+		env->pan_y -= 30;
+	if (env->menu == 0)
+		render(env->vec, env);
+	else
+		display_menu(key, env);
 	return 0;
 }
 
 int		deal_mouse(int button, int x, int y, t_env *env)
 {
-	if (button == 4)
-		env->zoom += 5;
-	if (button == 5)
-		env->zoom -= 5;
-	mlx_clear_window(env->mlx_ptr, env->win_ptr);
-	render(env->vec, env);
+	//printf("key = %d\n", button);
+	if (env->menu == 0)
+	{
+		if (button == 4)
+			env->zoom += 1;
+		if (button == 5 && env->zoom > 1)
+			env->zoom -= 1;
+		mlx_clear_window(env->mlx_ptr, env->win_ptr);
+		render(env->vec, env);
+	}
 	return 0;
 }
 
@@ -95,22 +113,11 @@ int		fdf(t_env *env, t_vec *vec)
 	int i = 0;
 	int ret;
 
-	env->vec = vec_new();
-	env->width = 2560;
-	env->height = 1315;
-	env->zoom = 10;
-	env->alt = 0.5;
-	env->angle_x = 0;
-	env->angle_y = 0;
-	env->angle_z = 0;
-	env->iso = 0;
-	env->mlx_ptr = mlx_init();
-	env->win_ptr = mlx_new_window(env->mlx_ptr, env->width, env->height, "FdF");
-	env->img_pptr = mlx_new_image(env->mlx_ptr, env->width, env->height);
+	setup(env);
 	map_to_struct(&env->map, env->vec);
 	render(env->vec, env);
-	mlx_key_hook(env->win_ptr, deal_key, env);
 	mlx_mouse_hook(env->win_ptr, deal_mouse, env);
+	mlx_key_hook(env->win_ptr, deal_key, env);
 	mlx_loop(env->mlx_ptr);
 	return (0);
 }

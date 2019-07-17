@@ -54,5 +54,11 @@ void		iso(t_vec *vec);
 t_vec		vec_cpy(t_vec *vec);
 void		fill_pixel(char *img_str, t_seg *seg, t_env *env);
 void		get_gradient(t_env *env, int sl, t_seg *seg);
+void		display_menu(int key, t_env *env);
+void		setup_colors(t_env *env);
+void		displaytext(t_env *env);
+void		displaytext2(t_env *env);
+void		displaytext3(t_env *env);
+void		displaytext4(t_env *env);
 
 #endif

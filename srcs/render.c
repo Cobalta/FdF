@@ -20,9 +20,11 @@ void	draw_line(t_vec *vec1, t_vec *vec2, t_env *env)
 	seg.z1 = (int)(vec1->z1);
 	seg.z2 = (int)(vec2->z1);
 	vec_mult(vec2, env->zoom);
-	translate(vec2, env->width/2, env->height/2, 0);
-	if ((vec1->x < env->width && vec1->x > 0) && (vec1->y < env->height && vec1->y > 0))
-		if ((vec2->x < env->width && vec2->x > 0) && (vec2->y < env->height && vec2->y > 0))
+	translate(vec2, env->width / 2 + env->pan_x, env->height / 2 + env->pan_y, 0);
+	if ((vec1->x < env->width && vec1->x > 0)
+		&& (vec1->y < env->height && vec1->y > 0))
+		if ((vec2->x < env->width && vec2->x > 0)
+			&& (vec2->y < env->height && vec2->y > 0))
 		{
 			seg.x1 = (int)(vec1->x);
 			seg.y1 = (int)(vec1->y);
@@ -78,6 +80,7 @@ void	map_draw(t_vec *vec, t_env *env)
 	t_vec vec1;
 	t_vec vec2;
 	t_vec vec3;
+
 	//printf("x %f y %f z %f\n",env->angle_x, env->angle_y, env->angle_z),fflush(stdout);
 	vec1 = vec_cpy(vec);
 	vec1.z *= env->alt;
@@ -85,6 +88,7 @@ void	map_draw(t_vec *vec, t_env *env)
 	{
 		vec2 = vec_cpy(vec->right);
 		vec2.z *= env->alt;
+		env->z2 = vec->right->z;
 	}
 	if (vec->down != NULL)
 	{
@@ -95,25 +99,20 @@ void	map_draw(t_vec *vec, t_env *env)
 		rotater(&vec1, &vec2, &vec3, env);
 	projecter(&vec1, &vec2, &vec3, env);
 	vec_mult(&vec1, env->zoom);
-	translate(&vec1, env->width/2, env->height/2, 0);
+	translate(&vec1, env->width / 2 + env->pan_x, env->height / 2 + env->pan_y, 0);
 	env->z1 = vec->z;
 	if (vec->right != NULL)
-	{
-		env->z2 = vec->right->z;
 		draw_line(&vec1, &vec2, env);
-	}
 	if (vec->down != NULL)
 	{
 		env->z2 = vec->down->z;
 		draw_line(&vec1, &vec3, env);
 	}
-
 }
 
 
 int		render(t_vec *vec, t_env *env)
 {
-
 	//printf("B x %f y %f z %f\n",vec->x, vec->y, vec->z),fflush(stdout);
 	while (vec->next != NULL)
 	{

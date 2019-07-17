@@ -67,12 +67,10 @@ void	get_gradient(t_env *env, int sl, t_seg *seg)
 	env->Rres = 0;
 	env->Gres = 0;
 	env->Bres = 0;
-	if (env->R1 != env->R2)
-		env->Rres = (env->R2 - env->R1) / (sl + 1);
-
-	if (env->G1 != env->G2)
-		env->Gres = (env->G2 - env->G1) / (sl + 1);
-
+	if (env->R[1] != env->R[2])
+		env->Rres = (env->R[2] - env->R[1]) / (sl + 1);
+	if (env->G[1] != env->G[2])
+		env->Gres = (env->G[2] - env->G[1]) / (sl + 1);
 	if (env->B1 != env->B2)
 		env->Bres = (env->B2 - env->B1) / (sl + 1);
 	if (env->z1 != 0)
@@ -81,9 +79,9 @@ void	get_gradient(t_env *env, int sl, t_seg *seg)
 			percent = env->z1 / env->map.zmax;
 		else
 			percent = env->z1 / env->map.zmin;
-		env->R += (env->R2 - env->R1) * percent;
-		env->G += (env->G2 - env->G1) * percent;
-		env->B += (env->B2 - env->B1) * percent;
+		env->R[0] += (env->R[2] - env->R[1]) * percent;
+		env->G[0] += (env->G[2] - env->G[1]) * percent;
+		env->B[0] += (env->B[2] - env->B[1]) * percent;
 	}
 	if (env->z1 != env->z2)
 	{
