@@ -68,6 +68,7 @@ typedef struct	s_map
 	int			width;
 	int			height;
 	float		zmax;
+	float		zmin;
 }				t_map;
 
 typedef struct	s_img
@@ -97,6 +98,9 @@ typedef struct	s_env
 	float		R2;
 	float		G2;
 	float		B2;
+	float		R3;
+	float		G3;
+	float		B3;
 	float		R;
 	float		G;
 	float		B;
@@ -107,6 +111,7 @@ typedef struct	s_env
 	float		Rres;
 	float		Gres;
 	float		Bres;
+	int			sl;
 }				t_env;
 
 

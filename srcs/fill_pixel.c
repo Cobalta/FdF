@@ -19,7 +19,19 @@ void	gradients(t_env *env, t_seg *seg) {
 
 	i = 0;
 	z = 0;
-	if (env->z1 < env->z2)
+	if ((env->z1 < 0 && env->z2 > 0) ||	(env->z1 > 0 && env->z2 < 0))
+	{
+		if (env->R <= env->R1 + 5 && env->R >= env->R1 - 5)
+			env->Rres = (env->R2 - env->R1) / (env->sl / ((fabs(env->z1) + fabs(env->z2)) / fabs(env->z2)));
+		if (env->G <= env->G1 + 5 && env->G >= env->G1 - 5)
+			env->Gres = (env->G2 - env->G1) / (env->sl / ((fabs(env->z1) + fabs(env->z2)) / fabs(env->z2)));
+		if (env->B <= env->B1 + 5 && env->B >= env->B1 - 5)
+			env->Bres = (env->B2 - env->B1) / (env->sl / ((fabs(env->z1) + fabs(env->z2)) / fabs(env->z2)));
+		env->R += env->Rres;
+		env->G += env->Gres;
+		env->B += env->Bres;
+	}
+	else if (env->z1 < env->z2)
 	{
 		env->R += env->Rres;
 		env->G += env->Gres;

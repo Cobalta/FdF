@@ -81,9 +81,12 @@ int		deal_key(int key, t_env *env)
 
 int		deal_mouse(int button, int x, int y, t_env *env)
 {
-	//printf("key = %d\n", button);
+	if (button == 4)
+		env->zoom += 5;
+	if (button == 5)
+		env->zoom -= 5;
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
-
+	render(env->vec, env);
 	return 0;
 }
 
