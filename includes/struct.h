@@ -91,24 +91,9 @@ typedef struct	s_env
 	t_img	*img;
 	void	*img_pptr;
 	t_vec	*vec;
-<<<<<<< HEAD
-	float		R1;
-	float		G1;
-	float		B1;
-	float		R2;
-	float		G2;
-	float		B2;
-	float		R3;
-	float		G3;
-	float		B3;
-	float		R;
-	float		G;
-	float		B;
-=======
 	float		R[3];
 	float		G[3];
 	float		B[3];
->>>>>>> e430518a0b41699cb75bf13d560c9269aa928882
 	float		alt;
 	int			iso;
 	float		z1;
@@ -116,15 +101,12 @@ typedef struct	s_env
 	float		Rres;
 	float		Gres;
 	float		Bres;
-<<<<<<< HEAD
 	int			sl;
-=======
 	int			menu;
 	int			menux;
 	int			menuy;
 	int			pan_x;
 	int			pan_y;
->>>>>>> e430518a0b41699cb75bf13d560c9269aa928882
 }				t_env;
 
 

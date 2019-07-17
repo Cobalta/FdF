@@ -21,10 +21,10 @@ void	draw_line(t_vec *vec1, t_vec *vec2, t_env *env)
 	seg.z2 = (int)(vec2->z1);
 	vec_mult(vec2, env->zoom);
 	translate(vec2, env->width / 2 + env->pan_x, env->height / 2 + env->pan_y, 0);
-	if ((vec1->x < env->width && vec1->x > 0)
-		&& (vec1->y < env->height && vec1->y > 0))
-		if ((vec2->x < env->width && vec2->x > 0)
-			&& (vec2->y < env->height && vec2->y > 0))
+	if ((vec1->x < env->width + 500 && vec1->x > -500)
+		&& (vec1->y < env->height + 500 && vec1->y > -500))
+		if ((vec2->x < env->width + 500 && vec2->x > -500)
+			&& (vec2->y < env->height + 500 && vec2->y > -500))
 		{
 			seg.x1 = (int)(vec1->x);
 			seg.y1 = (int)(vec1->y);
