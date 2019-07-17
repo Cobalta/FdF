@@ -21,15 +21,15 @@ void	gradients(t_env *env, t_seg *seg) {
 	z = 0;
 	if (env->z1 < env->z2)
 	{
-		env->R[0] += env->Rres;
-		env->G[0] += env->Gres;
-		env->B[0] += env->Bres;
+		env->R[0] += env->r_res;
+		env->G[0] += env->g_res;
+		env->B[0] += env->b_res;
 	}
 	else if (env->z1 > env->z2)
 	{
-		env->R[0] -= env->Rres;
-		env->G[0] -= env->Gres;
-		env->B[0] -= env->Bres;
+		env->R[0] -= env->r_res;
+		env->G[0] -= env->g_res;
+		env->B[0] -= env->b_res;
 	}
 }
 

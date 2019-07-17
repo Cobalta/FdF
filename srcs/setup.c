@@ -45,8 +45,5 @@ void	setup(t_env *env)
 	env->angle_y = 0;
 	env->angle_z = 0;
 	env->iso = 0;
-	env->mlx_ptr = mlx_init();
-	env->win_ptr = mlx_new_window(env->mlx_ptr, env->width, env->height, "FdF");
-	env->img_pptr = mlx_new_image(env->mlx_ptr, env->width, env->height);
-	return;
+	return ;
 }

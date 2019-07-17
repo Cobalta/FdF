@@ -12,8 +12,6 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-
 #include <stdio.h>
 
 int		get_nb(char *line)
@@ -56,7 +54,7 @@ int		*line_convert(char *line, t_map *map)
 	i[1] = 0;
 	i[2] = 0;
 	if (!(int_line = (int *)malloc(sizeof(int) * get_nb(line) + 1)))
-		return 0;
+		return (0);
 	map->width = get_nb(line);
 	while (i[0] < get_nb(line))
 	{
@@ -72,10 +70,10 @@ int		*line_convert(char *line, t_map *map)
 		free(tmp);
 		operation(i);
 	}
-	return int_line;
+	return (int_line);
 }
 
-void 	map_convert(t_map_line *map_line, t_map *map)
+void	map_convert(t_map_line *map_line, t_map *map)
 {
 	t_map_line	*nb_line;
 	int			i;

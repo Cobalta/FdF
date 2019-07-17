@@ -28,9 +28,9 @@
 
 void		env_del(t_env *env);
 void		line_tracer(t_seg *seg, t_env *env);
-int 		get_next_line(const int fd, char **line);
+int			get_next_line(const int fd, char **line);
 int			fdf(t_env *env, t_vec *vec);
-void 		get_map(char *av, t_map *map);
+void		get_map(char *av, t_map *map);
 t_map_line	*map_line_new(void);
 void		map_line_next(t_map_line **map_line, char *str);
 void		map_line_del(t_map_line *map_line);
@@ -43,11 +43,12 @@ void		rotate(t_vec *vec, char rot);
 void		rotate_x(t_vec *vec, float iter);
 void		rotate_y(t_vec *vec, float iter);
 void		rotate_z(t_vec *vec, float iter);
-void 		translate(t_vec *vec, int x, int y, int z);
+void		translate(t_vec *vec, int x, int y, int z);
 void		setup(t_env *env);
 t_vec		*vec_new(void);
-void		vec_next(t_vec **vec, int x, int y ,float z, t_map *map);
+void		vec_next(t_vec **vec, t_vec *vec1, float z, t_map *map);
 void		vec_del(t_vec *vec);
+void		vec_alt(t_vec *vec1, t_vec *vec2, t_vec *vec3, t_env *env);
 void		map_to_struct(t_map *map, t_vec *vec);
 void		anglekey(int key, t_env *env);
 void		iso(t_vec *vec);

@@ -17,7 +17,7 @@ void	down(t_map *map, t_vec **vec, int x, int y)
 {
 	t_vec	*down_vec;
 	t_vec	*vec_cpy;
-	int 	i;
+	int		i;
 
 	vec_cpy = *vec;
 	while (y < map->height - 1)
@@ -43,10 +43,10 @@ void	down(t_map *map, t_vec **vec, int x, int y)
 
 void	right_down(t_map *map, t_vec **vec)
 {
-	int x;
-	int y;
-	int i;
-	t_vec *vec_cpy;
+	int		x;
+	int		y;
+	int		i;
+	t_vec	*vec_cpy;
 
 	y = 0;
 	vec_cpy = *vec;
@@ -64,58 +64,23 @@ void	right_down(t_map *map, t_vec **vec)
 		y++;
 	}
 	down(map, vec, 0, 0);
-
-//	x = 0;
-//	t_vec	*cpy;
-//	*vec = (*vec)->next;
-//	while (x < map->width)
-//	{
-//		cpy = *vec;
-//		while (cpy->down != NULL)
-//		{
-//			printf("[%f] ", cpy->z);
-//			cpy = cpy->down;
-//		}
-//		printf("[%f] ", cpy->z);
-//		printf("\n");
-//		*vec = (*vec)->next;
-//		x++;
-//	}
-
-
-//	y = 0;
-//	*vec = (*vec)->next;
-//	while (y < map->height)
-//	{
-//		int i = 0;
-//		while ((*vec)->right != NULL)
-//		{
-//			printf("[%f] ",(*vec)->z);
-//			i++;
-//			*vec = (*vec)->next;
-//		}
-//		//printf("[%f] ",(*vec)->z);
-//		//printf("\n");
-//		*vec = (*vec)->next;
-//		y++;
-//	}
 }
 
 void	map_to_struct(t_map *map, t_vec *vec)
 {
-	int	x;
-	int y;
+	t_vec vec1;
 
-	y = 0;
-	while (y < map->height)
+	vec1.y = 0;
+	while (vec1.y < map->height)
 	{
-		x = 0;
-		while (x < map->width)
+		vec1.x = 0;
+		while (vec1.x < map->width)
 		{
-			vec_next(&vec, x, y, (float)map->map[y][x], map);
-			x++;
+			vec_next(&vec, &vec1,
+					(float)map->map[(int)vec1.y][(int)vec1.x], map);
+			vec1.x++;
 		}
-		y++;
+		vec1.y++;
 	}
 	right_down(map, &vec);
 }

@@ -13,27 +13,27 @@
 
 #include "../includes/fdf.h"
 #include <stdio.h>
-int		main(int ac, char **av)
+
+int	main(int ac, char **av)
 {
-	t_env env;
-	t_vec vec;
+	t_env	env;
+	t_vec	vec;
+	int		i;
+	int		y;
 
-
-	if (ac != 2) {
+	i = 0;
+	if (ac != 2)
+	{
 		ft_puterror("usage : ./fdf <map>");
 	}
 	get_map(av[1], &env.map);
-	int i = 0;
-	int y;
 	while (i < (env.map).height)
 	{
 		y = 0;
 		while (y < (env.map).width)
 		{
-			//printf("%d ", map.map[i][y]);
 			y++;
 		}
-		//printf("\n");
 		i++;
 	}
 	fdf(&env, &vec);

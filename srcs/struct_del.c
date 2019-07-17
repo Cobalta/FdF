@@ -26,7 +26,7 @@ void	vec_del(t_vec *vec)
 
 void	map_del(t_map *map)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (i < map->height)

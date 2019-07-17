@@ -14,6 +14,17 @@
 #ifndef FDF_STRUCT_H
 # define FDF_STRUCT_H
 
+typedef struct	s_writer
+{
+	int		px;
+	int		px1;
+	int		py1;
+	int		bpp;
+	int		sl;
+	int		endian;
+	char	*img_str;
+}				t_writer;
+
 typedef struct	s_line
 {
 	int		px;
@@ -22,7 +33,6 @@ typedef struct	s_line
 	int		dy;
 	int		x_incr;
 	int		y_incr;
-
 }				t_line;
 
 typedef struct	s_seg
@@ -38,17 +48,17 @@ typedef struct	s_seg
 
 typedef	struct	s_map_line
 {
-	char 	*line;
+	char	*line;
 	int		nbl;
 	void	*next;
 }				t_map_line;
 
 typedef	struct	s_vec
 {
-	double 	x;
-	double  y;
-	double 	z;
-	int 	z1;
+	double			x;
+	double			y;
+	double			z;
+	int				z1;
 	struct s_vec	*right;
 	struct s_vec	*down;
 	struct s_vec	*next;
@@ -90,23 +100,21 @@ typedef struct	s_env
 	t_img	*img;
 	void	*img_pptr;
 	t_vec	*vec;
-	float		R[3];
-	float		G[3];
-	float		B[3];
-	float		alt;
-	int			iso;
-	float		z1;
-	float		z2;
-	float		Rres;
-	float		Gres;
-	float		Bres;
-	int			menu;
-	int			menux;
-	int			menuy;
-	int			pan_x;
-	int			pan_y;
+	float	r[3];
+	float	g[3];
+	float	b[3];
+	float	alt;
+	int		iso;
+	float	z1;
+	float	z2;
+	float	r_res;
+	float	g_res;
+	float	b_res;
+	int		menu;
+	int		menux;
+	int		menuy;
+	int		pan_x;
+	int		pan_y;
 }				t_env;
-
-
 
 #endif

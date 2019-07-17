@@ -13,25 +13,21 @@
 
 #include "../includes/fdf.h"
 
-static void	linewriter1(t_line *line, t_seg *seg, t_env *env)
+void	linewriter1(t_line *line, t_seg *seg, t_env *env)
 {
-	int i;
-	int px1;
-	int py1;
-	int bpp;
-	int sl;
-	int endian;
-	char *img_str;
+	int			i;
+	t_writer	writer;
 
 	i = 0;
-	px1 = line->px;
-	py1 = line->py;
-	img_str = mlx_get_data_addr(env->img_pptr, &(bpp), &(sl), &(endian));
+	writer.px1 = line->px;
+	writer.py1 = line->py;
+	writer.img_str = mlx_get_data_addr(env->img_pptr,
+			&(writer.bpp), &(writer.sl), &(writer.endian));
 	setup_colors(env);
-	get_gradient(env, px1, seg);
-	while (i <= px1)
+	get_gradient(env, writer.px1, seg);
+	while (i <= writer.px1)
 	{
-		fill_pixel(img_str, seg, env);
+		fill_pixel(writer.img_str, seg, env);
 		i++;
 		seg->x1 += line->x_incr;
 		line->px -= line->dy;
@@ -43,26 +39,21 @@ static void	linewriter1(t_line *line, t_seg *seg, t_env *env)
 	}
 }
 
-static void	linewriter2(t_line *line, t_seg *seg, t_env *env)
+void	linewriter2(t_line *line, t_seg *seg, t_env *env)
 {
-	int i;
-	int px1;
-	int py1;
-	int bpp;
-	int sl;
-	int endian;
-	char *img_str;
+	int			i;
+	t_writer	writer;
 
 	i = 0;
-	px1 = line->px;
-	py1 = line->py;
-
-	img_str = mlx_get_data_addr(env->img_pptr, &(bpp), &(sl), &(endian));
+	writer.px1 = line->px;
+	writer.py1 = line->py;
+	writer.img_str = mlx_get_data_addr(env->img_pptr,
+			&(writer.bpp), &(writer.sl), &(writer.endian));
 	setup_colors(env);
-	get_gradient(env, py1, seg);
-	while (i <= py1)
+	get_gradient(env, writer.py1, seg);
+	while (i <= writer.py1)
 	{
-		fill_pixel(img_str, seg, env);
+		fill_pixel(writer.img_str, seg, env);
 		i++;
 		seg->y1 += line->y_incr;
 		line->py -= line->dx;
