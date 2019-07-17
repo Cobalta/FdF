@@ -14,7 +14,6 @@
 #ifndef FDF_STRUCT_H
 # define FDF_STRUCT_H
 
-
 typedef struct	s_line
 {
 	int		px;
@@ -91,15 +90,9 @@ typedef struct	s_env
 	t_img	*img;
 	void	*img_pptr;
 	t_vec	*vec;
-	float		R1;
-	float		G1;
-	float		B1;
-	float		R2;
-	float		G2;
-	float		B2;
-	float		R;
-	float		G;
-	float		B;
+	float		R[3];
+	float		G[3];
+	float		B[3];
 	float		alt;
 	int			iso;
 	float		z1;
@@ -107,6 +100,11 @@ typedef struct	s_env
 	float		Rres;
 	float		Gres;
 	float		Bres;
+	int			menu;
+	int			menux;
+	int			menuy;
+	int			pan_x;
+	int			pan_y;
 }				t_env;
 
 

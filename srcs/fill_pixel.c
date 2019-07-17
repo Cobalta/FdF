@@ -21,15 +21,15 @@ void	gradients(t_env *env, t_seg *seg) {
 	z = 0;
 	if (env->z1 < env->z2)
 	{
-		env->R += env->Rres;
-		env->G += env->Gres;
-		env->B += env->Bres;
+		env->R[0] += env->Rres;
+		env->G[0] += env->Gres;
+		env->B[0] += env->Bres;
 	}
 	else if (env->z1 > env->z2)
 	{
-		env->R -= env->Rres;
-		env->G -= env->Gres;
-		env->B -= env->Bres;
+		env->R[0] -= env->Rres;
+		env->G[0] -= env->Gres;
+		env->B[0] -= env->Bres;
 	}
 }
 
@@ -42,8 +42,8 @@ void	fill_pixel(char *img_str, t_seg *seg, t_env *env)
 	pos = 0;
 	pos = (pos + 4 * env->width) * seg->y1;
 	pos += 4 * seg->x1;
-	img_str[pos] = (char)env->B;
-	img_str[pos + 1] = (char)env->G;
-	img_str[pos + 2] = (char)env->R;
+	img_str[pos] = (char)env->B[0];
+	img_str[pos + 1] = (char)env->G[0];
+	img_str[pos + 2] = (char)env->R[0];
 	img_str[pos + 3] = (char)0;
 }

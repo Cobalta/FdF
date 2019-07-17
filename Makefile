@@ -27,7 +27,9 @@ SRCS =	srcs/main.c 			\
 		srcs/map_to_struct.c	\
 		srcs/vec_op.c           \
 		srcs/fill_pixel.c		\
-		srcs/get_gradient.c
+		srcs/get_gradient.c		\
+		srcs/menu.c				\
+		srcs/displaymenu.c
 
 
 OBJS = $(SRCS:.c=.o)
