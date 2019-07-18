@@ -77,6 +77,7 @@ typedef struct	s_map
 	int			width;
 	int			height;
 	float		zmax;
+	float		zmin;
 }				t_map;
 
 typedef struct	s_img
@@ -100,6 +101,7 @@ typedef struct	s_env
 	t_img	*img;
 	void	*img_pptr;
 	t_vec	*vec;
+	int		sl;
 	float	r[3];
 	float	g[3];
 	float	b[3];

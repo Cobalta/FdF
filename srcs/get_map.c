@@ -44,18 +44,16 @@ void	operation(int *i)
 	i[0]++;
 }
 
-int		*line_convert(char *line, t_map *map)
+int		*line_convert(char *line, t_map *map, char *tmp)
 {
 	int		i[3];
 	int		*int_line;
-	char	*tmp;
 
 	i[0] = 0;
 	i[1] = 0;
 	i[2] = 0;
 	if (!(int_line = (int *)malloc(sizeof(int) * get_nb(line) + 1)))
 		return (0);
-	map->width = get_nb(line);
 	while (i[0] < get_nb(line))
 	{
 		while (line[i[2]] == ' ')
@@ -67,6 +65,8 @@ int		*line_convert(char *line, t_map *map)
 		int_line[i[0]] = ft_atoi(tmp);
 		if (int_line[i[0]] > map->zmax)
 			map->zmax = int_line[i[0]];
+		if (int_line[i[0]] < map->zmin)
+			map->zmin = int_line[i[0]];
 		free(tmp);
 		operation(i);
 	}
@@ -88,11 +88,12 @@ void	map_convert(t_map_line *map_line, t_map *map)
 	map_line = map_line->next;
 	while (map_line->next != NULL)
 	{
-		map->map[i] = line_convert(map_line->line, map);
+		map->map[i] = line_convert(map_line->line, map, NULL);
 		map_line = map_line->next;
 		i++;
 	}
-	map->map[i] = line_convert(map_line->line, map);
+	map->width = get_nb(map_line->line);
+	map->map[i] = line_convert(map_line->line, map, NULL);
 }
 
 void	get_map(char *av, t_map *map)
