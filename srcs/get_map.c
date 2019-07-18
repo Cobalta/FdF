@@ -12,8 +12,6 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-
 #include <stdio.h>
 
 int		get_nb(char *line)
@@ -46,17 +44,16 @@ void	operation(int *i)
 	i[0]++;
 }
 
-int		*line_convert(char *line, t_map *map)
+int		*line_convert(char *line, t_map *map, char *tmp)
 {
 	int		i[3];
 	int		*int_line;
-	char	*tmp;
 
 	i[0] = 0;
 	i[1] = 0;
 	i[2] = 0;
 	if (!(int_line = (int *)malloc(sizeof(int) * get_nb(line) + 1)))
-		return 0;
+		return (0);
 	while (i[0] < get_nb(line))
 	{
 		while (line[i[2]] == ' ')
@@ -73,10 +70,10 @@ int		*line_convert(char *line, t_map *map)
 		free(tmp);
 		operation(i);
 	}
-	return int_line;
+	return (int_line);
 }
 
-void 	map_convert(t_map_line *map_line, t_map *map)
+void	map_convert(t_map_line *map_line, t_map *map)
 {
 	t_map_line	*nb_line;
 	int			i;
@@ -91,12 +88,12 @@ void 	map_convert(t_map_line *map_line, t_map *map)
 	map_line = map_line->next;
 	while (map_line->next != NULL)
 	{
-		map->map[i] = line_convert(map_line->line, map);
+		map->map[i] = line_convert(map_line->line, map, NULL);
 		map_line = map_line->next;
 		i++;
 	}
 	map->width = get_nb(map_line->line);
-	map->map[i] = line_convert(map_line->line, map);
+	map->map[i] = line_convert(map_line->line, map, NULL);
 }
 
 void	get_map(char *av, t_map *map)

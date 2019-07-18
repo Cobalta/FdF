@@ -20,7 +20,8 @@ void	draw_line(t_vec *vec1, t_vec *vec2, t_env *env)
 	seg.z1 = (int)(vec1->z1);
 	seg.z2 = (int)(vec2->z1);
 	vec_mult(vec2, env->zoom);
-	translate(vec2, env->width / 2 + env->pan_x, env->height / 2 + env->pan_y, 0);
+	translate(vec2, env->width / 2 + env->pan_x, env->height
+		/ 2 + env->pan_y, 0);
 	if ((vec1->x < env->width + 500 && vec1->x > -500)
 		&& (vec1->y < env->height + 500 && vec1->y > -500))
 		if ((vec2->x < env->width + 500 && vec2->x > -500)
@@ -73,33 +74,29 @@ void	projecter(t_vec *vec1, t_vec *vec2, t_vec *vec3, t_env *env)
 		else
 			project(vec3);
 	}
+	vec_mult(vec1, env->zoom);
+	translate(vec1, env->width / 2 + env->pan_x,
+			env->height / 2 + env->pan_y, 0);
 }
 
 void	map_draw(t_vec *vec, t_env *env)
 {
-	t_vec vec1;
-	t_vec vec2;
-	t_vec vec3;
+	t_vec	vec1;
+	t_vec	vec2;
+	t_vec	vec3;
 
-	//printf("x %f y %f z %f\n",env->angle_x, env->angle_y, env->angle_z),fflush(stdout);
 	vec1 = vec_cpy(vec);
-	vec1.z *= env->alt;
 	if (vec->right != NULL)
 	{
 		vec2 = vec_cpy(vec->right);
-		vec2.z *= env->alt;
 		env->z2 = vec->right->z;
 	}
 	if (vec->down != NULL)
-	{
 		vec3 = vec_cpy(vec->down);
-		vec3.z *= env->alt;
-	}
+	vec_alt(&vec1, &vec2, &vec3, env);
 	if (env->iso == 0)
 		rotater(&vec1, &vec2, &vec3, env);
 	projecter(&vec1, &vec2, &vec3, env);
-	vec_mult(&vec1, env->zoom);
-	translate(&vec1, env->width / 2 + env->pan_x, env->height / 2 + env->pan_y, 0);
 	env->z1 = vec->z;
 	if (vec->right != NULL)
 		draw_line(&vec1, &vec2, env);
@@ -110,24 +107,15 @@ void	map_draw(t_vec *vec, t_env *env)
 	}
 }
 
-
 int		render(t_vec *vec, t_env *env)
 {
-	//printf("B x %f y %f z %f\n",vec->x, vec->y, vec->z),fflush(stdout);
 	while (vec->next != NULL)
 	{
-		//printf("x %f y %f z %f\n",vec->x, vec->y, vec->z),fflush(stdout);
 		map_draw(vec->next, env);
 		vec = vec->next;
 	}
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_pptr, 0, 0);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, 50, 100, 0xa020f0, "X");
-	mlx_string_put(env->mlx_ptr, env->win_ptr, 100, 100, 0xa020f0, ft_itoa(env->angle_x));
-	mlx_string_put(env->mlx_ptr, env->win_ptr, 50, 150, 0xa020f0, "Y");
-	mlx_string_put(env->mlx_ptr, env->win_ptr, 100, 150, 0xa020f0, ft_itoa(env->angle_y));
-	mlx_string_put(env->mlx_ptr, env->win_ptr, 50, 200, 0xa020f0, "Z");
-	mlx_string_put(env->mlx_ptr, env->win_ptr, 100, 200, 0xa020f0, ft_itoa(env->angle_z));
 	mlx_destroy_image(env->mlx_ptr, env->img_pptr);
 	env->img_pptr = mlx_new_image(env->mlx_ptr, env->width, env->height);
 	return (0);

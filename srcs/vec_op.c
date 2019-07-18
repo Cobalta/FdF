@@ -47,3 +47,12 @@ t_vec	vec_cpy(t_vec *vec)
 	cpy.z = vec->z;
 	return (cpy);
 }
+
+void	vec_alt(t_vec *vec1, t_vec *vec2, t_vec *vec3, t_env *env)
+{
+	vec1->z *= (float)env->alt;
+	if (vec2 != NULL)
+		vec2->z *= (float)env->alt;
+	if (vec3 != NULL)
+		vec3->z *= (float)env->alt;
+}

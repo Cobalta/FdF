@@ -13,7 +13,7 @@
 
 #include "../includes/fdf.h"
 
-void	anglecheck(t_env *env)
+void	anglecheck(int key, t_env *env)
 {
 	if (env->angle_x > 32)
 		env->angle_x = -31;
@@ -27,6 +27,14 @@ void	anglecheck(t_env *env)
 		env->angle_y = 31;
 	if (env->angle_z < -31)
 		env->angle_z = 31;
+	if (key == 86)
+		env->pan_x -= 30;
+	if (key == 88)
+		env->pan_x += 30;
+	if (key == 84)
+		env->pan_y += 30;
+	if (key == 91)
+		env->pan_y -= 30;
 }
 
 void	anglekey(int key, t_env *env)
@@ -51,7 +59,7 @@ void	anglekey(int key, t_env *env)
 		env->alt = 0.5;
 		env->zoom = 10;
 	}
-	anglecheck(env);
+	anglecheck(key, env);
 	if (key == 3)
 		env->iso = 1;
 	else
@@ -65,7 +73,7 @@ int		deal_key(int key, t_env *env)
 		env_del(env);
 		exit(1);
 	}
-	if (key == 2 || key == 3 || (key > 115 && key < 127))
+	if (key == 2 || key == 3 || key > 83)
 		anglekey(key, env);
 	if (key == 31)
 		env->alt += 0.1;
@@ -78,24 +86,15 @@ int		deal_key(int key, t_env *env)
 		else
 			env->menu = 0;
 	}
-	if (key == 86)
-		env->pan_x -= 30;
-	if (key == 88)
-		env->pan_x += 30;
-	if (key == 84)
-		env->pan_y += 30;
-	if (key == 91)
-		env->pan_y -= 30;
 	if (env->menu == 0)
 		render(env->vec, env);
 	else
 		display_menu(key, env);
-	return 0;
+	return (0);
 }
 
 int		deal_mouse(int button, int x, int y, t_env *env)
 {
-	//printf("key = %d\n", button);
 	if (env->menu == 0)
 	{
 		if (button == 4)
@@ -105,15 +104,15 @@ int		deal_mouse(int button, int x, int y, t_env *env)
 		mlx_clear_window(env->mlx_ptr, env->win_ptr);
 		render(env->vec, env);
 	}
-	return 0;
+	return (0);
 }
 
 int		fdf(t_env *env, t_vec *vec)
 {
-	int i = 0;
-	int ret;
-
 	setup(env);
+	env->mlx_ptr = mlx_init();
+	env->win_ptr = mlx_new_window(env->mlx_ptr, env->width, env->height, "FdF");
+	env->img_pptr = mlx_new_image(env->mlx_ptr, env->width, env->height);
 	map_to_struct(&env->map, env->vec);
 	render(env->vec, env);
 	mlx_mouse_hook(env->win_ptr, deal_mouse, env);

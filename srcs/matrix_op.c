@@ -121,6 +121,3 @@ void	rotate_z(t_vec *vec, float iter)
 			iter++;
 	}
 }
-
-
-
