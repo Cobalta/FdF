@@ -25,21 +25,21 @@ void	menu_color3(t_env *env)
 {
 	if (env->menuy == 6)
 	{
-		env->R[env->menux + 1] = 153;
-		env->G[env->menux + 1] = 0;
-		env->B[env->menux + 1] = 255;
+		env->r[env->menux + 1] = 153;
+		env->g[env->menux + 1] = 0;
+		env->b[env->menux + 1] = 255;
 	}
 	else if (env->menuy == 7)
 	{
-		env->R[env->menux + 1] = 255;
-		env->G[env->menux + 1] = 255;
-		env->B[env->menux + 1] = 0;
+		env->r[env->menux + 1] = 255;
+		env->g[env->menux + 1] = 255;
+		env->b[env->menux + 1] = 0;
 	}
 	else if (env->menuy == 8)
 	{
-		env->R[env->menux + 1] = 253;
-		env->G[env->menux + 1] = 14;
-		env->B[env->menux + 1] = 225;
+		env->r[env->menux + 1] = 253;
+		env->g[env->menux + 1] = 14;
+		env->b[env->menux + 1] = 225;
 	}
 }
 
@@ -47,21 +47,21 @@ void	menu_color2(t_env *env)
 {
 	if (env->menuy == 3)
 	{
-		env->R[env->menux + 1] = 0;
-		env->G[env->menux + 1] = 0;
-		env->B[env->menux + 1] = 0;
+		env->r[env->menux + 1] = 0;
+		env->g[env->menux + 1] = 0;
+		env->b[env->menux + 1] = 0;
 	}
 	else if (env->menuy == 4)
 	{
-		env->R[env->menux + 1] = 255;
-		env->G[env->menux + 1] = 255;
-		env->B[env->menux + 1] = 255;
+		env->r[env->menux + 1] = 255;
+		env->g[env->menux + 1] = 255;
+		env->b[env->menux + 1] = 255;
 	}
 	else if (env->menuy == 5)
 	{
-		env->R[env->menux + 1] = 255;
-		env->G[env->menux + 1] = 153;
-		env->B[env->menux + 1] = 0;
+		env->r[env->menux + 1] = 255;
+		env->g[env->menux + 1] = 153;
+		env->b[env->menux + 1] = 0;
 	}
 }
 
@@ -69,21 +69,21 @@ void	menu_color(t_env *env)
 {
 	if (env->menuy == 0)
 	{
-		env->R[env->menux + 1] = 255;
-		env->G[env->menux + 1] = 0;
-		env->B[env->menux + 1] = 0;
+		env->r[env->menux + 1] = 255;
+		env->g[env->menux + 1] = 0;
+		env->b[env->menux + 1] = 0;
 	}
 	else if (env->menuy == 1)
 	{
-		env->R[env->menux + 1] = 0;
-		env->G[env->menux + 1] = 255;
-		env->B[env->menux + 1] = 0;
+		env->r[env->menux + 1] = 0;
+		env->g[env->menux + 1] = 255;
+		env->b[env->menux + 1] = 0;
 	}
 	else if (env->menuy == 2)
 	{
-		env->R[env->menux + 1] = 0;
-		env->G[env->menux + 1] = 0;
-		env->B[env->menux + 1] = 255;
+		env->r[env->menux + 1] = 0;
+		env->g[env->menux + 1] = 0;
+		env->b[env->menux + 1] = 255;
 	}
 	menu_color2(env);
 	menu_color3(env);

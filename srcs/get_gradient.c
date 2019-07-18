@@ -21,30 +21,30 @@ void	get_gradient(t_env *env, int sl, t_seg *seg)
 	env->r_res = 0;
 	env->g_res = 0;
 	env->b_res = 0;
-	if (env->R[1] != env->R[2])
-		env->r_res = (env->R[2] - env->R[1]) / (sl + 1);
+	if (env->r[1] != env->r[2])
+		env->r_res = (env->r[2] - env->r[1]) / (sl + 1);
 
-	if (env->G[1] != env->G[2])
-		env->g_res = (env->G[2] - env->G[1]) / (sl + 1);
+	if (env->g[1] != env->g[2])
+		env->g_res = (env->g[2] - env->g[1]) / (sl + 1);
 
-	if (env->B[1] != env->B[2])
-		env->b_res = (env->B[2] - env->B[1]) / (sl + 1);
+	if (env->b[1] != env->b[2])
+		env->b_res = (env->b[2] - env->b[1]) / (sl + 1);
 
 	if (env->z1 != 0)
 	{
-		//printf("::%f\n", env->G[0]);
+		//printf("::%f\n", env->g[0]);
 
 		percent = env->z1 / env->map.zmax;
-		env->R[0] += (env->R[2] - env->R[1]) * percent;
+		env->r[0] += (env->r[2] - env->r[1]) * percent;
 
-		//printf("env->r_res : %f\nenv->z1 : %f\nenv->R[0] : %f\npercent : %f\nsl : %d\n\n",env->r_res,env->z1,env->R[0],percent,sl);
-
-		percent = env->z1 / env->map.zmax;
-		env->G[0] += ((env->G[2] - env->G[1]) * percent);
-
+		//printf("env->r_res : %f\nenv->z1 : %f\nenv->r[0] : %f\npercent : %f\nsl : %d\n\n",env->r_res,env->z1,env->r[0],percent,sl);
 
 		percent = env->z1 / env->map.zmax;
-		env->B[0] += (env->B[2] - env->B[1]) * percent;
+		env->g[0] += ((env->g[2] - env->g[1]) * percent);
+
+
+		percent = env->z1 / env->map.zmax;
+		env->b[0] += (env->b[2] - env->b[1]) * percent;
 	}
 	if (env->z1 != env->z2)
 	{

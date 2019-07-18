@@ -15,22 +15,22 @@
 
 void	setup_colors(t_env *env)
 {
-	env->R[0] = env->R[1];
-	env->G[0] = env->G[1];
-	env->B[0] = env->B[1];
+	env->r[0] = env->r[1];
+	env->g[0] = env->g[1];
+	env->b[0] = env->b[1];
 }
 
 void	setup(t_env *env)
 {
-	env->R[0] = 255;
-	env->R[1] = 255;
-	env->R[2] = 0;
-	env->G[0] = 0;
-	env->G[1] = 0;
-	env->G[2] = 0;
-	env->B[0] = 0;
-	env->B[1] = 0;
-	env->B[2] = 255;
+	env->r[0] = 255;
+	env->r[1] = 255;
+	env->r[2] = 0;
+	env->g[0] = 0;
+	env->g[1] = 0;
+	env->g[2] = 0;
+	env->b[0] = 0;
+	env->b[1] = 0;
+	env->b[2] = 255;
 	env->menux = 0;
 	env->menuy = 0;
 	env->pan_x = 0;
