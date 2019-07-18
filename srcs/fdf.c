@@ -27,14 +27,6 @@ void	anglecheck(int key, t_env *env)
 		env->angle_y = 31;
 	if (env->angle_z < -31)
 		env->angle_z = 31;
-	if (key == 86)
-		env->pan_x -= 30;
-	if (key == 88)
-		env->pan_x += 30;
-	if (key == 84)
-		env->pan_y += 30;
-	if (key == 91)
-		env->pan_y -= 30;
 }
 
 void	anglekey(int key, t_env *env)
@@ -73,12 +65,13 @@ int		deal_key(int key, t_env *env)
 		env_del(env);
 		exit(1);
 	}
-	if (key == 2 || key == 3 || key > 83)
+	if (key == 2 || key == 3 || key > 115)
 		anglekey(key, env);
 	if (key == 31)
 		env->alt += 0.1;
 	if (key == 35)
 		env->alt -= 0.1;
+	pan(key, env);
 	if (key == 46)
 	{
 		if (env->menu == 0)

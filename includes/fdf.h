@@ -61,5 +61,6 @@ void		displaytext(t_env *env);
 void		displaytext2(t_env *env);
 void		displaytext3(t_env *env);
 void		displaytext4(t_env *env);
+void		pan(int key, t_env *env);
 
 #endif

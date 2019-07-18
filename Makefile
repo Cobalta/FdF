@@ -29,7 +29,8 @@ SRCS =	srcs/main.c 			\
 		srcs/fill_pixel.c		\
 		srcs/get_gradient.c		\
 		srcs/menu.c				\
-		srcs/displaymenu.c
+		srcs/displaymenu.c		\
+		srcs/pan.c
 
 
 OBJS = $(SRCS:.c=.o)
