@@ -6,7 +6,7 @@
 #    By: brey-gal <brey-gal@student.le-101.fr>      +:+   +:    +:    +:+     #
 #                                                  #+#   #+    #+    #+#      #
 #    Created: 2019/06/24 16:19:43 by brey-gal     #+#   ##    ##    #+#       #
-#    Updated: 2019/06/24 16:19:43 by brey-gal    ###    #+. /#+    ###.fr     #
+#    Updated: 2019/07/21 23:28:23 by brey-gal    ###    #+. /#+    ###.fr      #
 #                                                          /                  #
 #                                                         /                   #
 #  ************************************************************************** #
@@ -47,6 +47,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 		$(MAKE) -C libft
+		$(MAKE) -C minilibx
 		$(CC) -o $(NAME) $(OBJS) $(LIB) $(MLX)
 
 clean :
@@ -55,6 +56,7 @@ clean :
 
 fclean : clean
 		$(MAKE) fclean -C libft
+		$(MAKE) clean -C minilibx
 		rm -f $(NAME)
 
 re : fclean all
