@@ -45,7 +45,5 @@ void	setup(t_env *env)
 	env->angle_y = 0;
 	env->angle_z = 0;
 	env->iso = 0;
-	env->x = 0;
-	env->y = 0;
 	return ;
 }

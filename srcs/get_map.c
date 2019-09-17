@@ -37,13 +37,6 @@ int		get_nb(char *line)
 	return (nb);
 }
 
-void	operation(int *i)
-{
-	i[2] = i[2] + i[1];
-	i[1] = 0;
-	i[0]++;
-}
-
 int		*line_convert(char *line, t_map *map, char *tmp)
 {
 	int		i[3];

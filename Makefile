@@ -30,7 +30,8 @@ SRCS =	srcs/main.c 			\
 		srcs/get_gradient.c		\
 		srcs/menu.c				\
 		srcs/displaymenu.c		\
-		srcs/pan.c
+		srcs/pan.c				\
+		srcs/operation.c
 
 LIBSRC =	libft/ft_puterror.c 	\
        		libft/ft_putstr.c		\
