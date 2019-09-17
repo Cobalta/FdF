@@ -37,19 +37,19 @@ void	draw_line(t_vec *vec1, t_vec *vec2, t_env *env)
 
 void	rotater(t_vec *vec1, t_vec *vec2, t_vec *vec3, t_env *env)
 {
-	rotate_y(vec1, env->angle_y);
 	rotate_x(vec1, env->angle_x);
+	rotate_y(vec1, env->angle_y);
 	rotate_z(vec1, env->angle_z);
 	if (vec2 != NULL)
 	{
-		rotate_y(vec2, env->angle_y);
 		rotate_x(vec2, env->angle_x);
+		rotate_y(vec2, env->angle_y);
 		rotate_z(vec2, env->angle_z);
 	}
 	if (vec3 != NULL)
 	{
-		rotate_y(vec3, env->angle_y);
 		rotate_x(vec3, env->angle_x);
+		rotate_y(vec3, env->angle_y);
 		rotate_z(vec3, env->angle_z);
 	}
 }
