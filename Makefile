@@ -32,8 +32,22 @@ SRCS =	srcs/main.c 			\
 		srcs/displaymenu.c		\
 		srcs/pan.c
 
+LIBSRC =	libft/ft_puterror.c 	\
+       		libft/ft_putstr.c		\
+			libft/ft_strnew.c		\
+			libft/ft_strjoin.c		\
+			libft/ft_strcpy.c		\
+			libft/ft_strsub.c		\
+			libft/ft_strlen.c		\
+			libft/ft_strdup.c		\
+			libft/ft_atoi.c			\
+			libft/ft_itoa.c
 
-OBJS = $(SRCS:.c=.o)
+INC =	includes/fdf.h	\
+		includes/struct.h
+
+OBJS =	$(SRCS:.c=.o) 	\
+		$(LIBSRC:.c=.o)
 
 CFlAGS += -Wall -Werror -Wextra
 
@@ -45,7 +59,7 @@ MLX = -L ./minilibx -lmlx -framework OpenGL -framework AppKit
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(INC)
 		$(MAKE) -C libft
 		$(MAKE) -C minilibx
 		$(CC) -o $(NAME) $(OBJS) $(LIB) $(MLX)

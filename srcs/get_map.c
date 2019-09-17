@@ -96,6 +96,22 @@ void	map_convert(t_map_line *map_line, t_map *map)
 	map->map[i] = line_convert(map_line->line, map, NULL);
 }
 
+int		check_linelen(t_map_line *map_line)
+{
+	int line_len;
+
+	line_len = get_nb(map_line->line);
+	while (map_line->next != NULL)
+	{
+		if ((get_nb(map_line->line)) != line_len)
+			return (0);
+		map_line = map_line->next;
+	}
+	if ((get_nb(map_line->line)) != line_len)
+		return (0);
+	return (1);
+}
+
 void	get_map(char *av, t_map *map)
 {
 	t_map_line	*map_line;
@@ -111,6 +127,8 @@ void	get_map(char *av, t_map *map)
 		map_line_next(&map_line, line);
 		free(line);
 	}
+	if ((check_linelen(map_line->next)) == 0)
+		ft_puterror("Found wrong line length. Exiting.");
 	map_convert(map_line, map);
 	map_line_del(map_line);
 }

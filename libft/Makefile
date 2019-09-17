@@ -17,8 +17,6 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-OBJ = $(SRC:.c=.o)
-
 SRC =	ft_puterror.c   \
         ft_putstr.c		\
         ft_strnew.c		\
@@ -33,11 +31,9 @@ SRC =	ft_puterror.c   \
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(SRC)
 		ar ruc $@ $?
 		ranlib $@
-
-.PHONY: clean fclean re
 
 clean:
 		$(RM) $(OBJ)
@@ -46,3 +42,5 @@ fclean: clean
 		$(RM)  $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean re

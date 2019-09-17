@@ -16,6 +16,7 @@
 
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
+# include "/opt/X11/include/X11/X.h"
 # include "struct.h"
 # include <fcntl.h>
 # include <stdlib.h>

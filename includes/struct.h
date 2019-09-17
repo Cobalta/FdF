@@ -117,6 +117,8 @@ typedef struct	s_env
 	int		menuy;
 	int		pan_x;
 	int		pan_y;
+	int		x;
+	int		y;
 }				t_env;
 
 #endif
