@@ -51,8 +51,7 @@ int		*line_convert(char *line, t_map *map, char *tmp)
 	{
 		while (line[i[2]] == ' ')
 			i[2]++;
-		while ((line[i[1] + i[2]] >= '0' && line[i[1] + i[2]] <= '9')
-			|| line[i[1] + i[2]] == '-' || line[i[1] + i[2]] == '+')
+		while (line[i[1] + i[2]] != ' ' && line[i[1] + i[2]] != '\0')
 			i[1]++;
 		tmp = ft_strsub(line, i[2], i[1]);
 		int_line[i[0]] = ft_atoi(tmp);
